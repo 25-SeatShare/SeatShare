@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "206569879665",
+    "project_id": "seatshare-8541b",
+    "storage_bucket": "seatshare-8541b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206569879665:android:f00b22f3aaa2f7ceb903d0",
+        "android_client_info": {
+          "package_name": "com.example.seatshare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBSxxsTpgIDpomKzLnHjf3Dn54fj052W8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
