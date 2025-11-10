@@ -40,6 +40,8 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.0")) // Database 21.0.1 포함
     implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-auth")
+
  // Firestore 사용 시
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
