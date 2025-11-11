@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="35dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:text="안내 사항"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "-------------------------------------------------------------------------"
+            android:layout_marginBottom="20dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_subway"
+            android:text="1. 7호선 군자역-이수역(총신대) 구간만 제한적으로 시행하고 있습니다."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. 교통약자 승객인 경우, 자리 조회에 혜택이   주어집니다."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. 위치 인증을 위해 핸드폰 내 위치 권한 허용을 설정해주세요."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="30dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. 승하차시에는 단말기의 위치 정보를 이용하여 인증이 진행됩니다."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="50dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="확     인"
+            android:backgroundTint="#3A83BF"/>
+
+        <CheckBox
+            android:id = "@+id/cb_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="다시 보지 않기"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>

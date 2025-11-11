@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="〈유의사항〉"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="35dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="본 서비스는 「교통약자의 이동편의 증진법」에 따라, 입력하신 나이 정보를 기반으로 교통약자 여부를 자동으로 판별하고 설정합니다."
+            android:textSize="13.5sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="정확한 나이 정보를 입력하는 것은 이용자의 의무입니다."
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="허위 나이 정보를 입력하여 교통약자 전용 서비스를 부정하게 이용할 경우, 이는 서비스 운영 방침 위반으로 간주되며, 이용 제한, 계정 정지, 법적 조치 등 불이익이 발생할 수 있습니다."
+            android:textStyle="bold"
+            android:textColor="#D32F2F"
+            android:textSize="13.5sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="본 서비스는 진정한 교통약자의 이동 편의를 위해 운영되고 있습니다. 이용자 여러분의 양심과 정확한 정보 입력이 공정한 서비스 이용을 위한 필수 조건임을 알려드립니다."
+            android:textSize="13.5sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="30dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginBottom="16dp" />
+
+        <CheckBox
+            android:id="@+id/cb_agree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13.5sp"
+            android:text="위 유의사항을 모두 읽었으며, 정확한 정보를 입력하고 이에 동의합니다." />
+
+    </LinearLayout>
+</ScrollView>

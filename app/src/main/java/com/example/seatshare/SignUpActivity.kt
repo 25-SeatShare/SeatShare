@@ -4,10 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.LayoutInflater
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +34,9 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup_main)
+
+        // 유의사항 팝업창 표시
+        showAgeNoticeDialog()
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -125,6 +132,30 @@ class SignUpActivity : AppCompatActivity() {
                     toast("프로필 저장 실패: ${e.localizedMessage}")
                 }
         }
+    }
+
+    // 유의사항 팝업창
+    private fun showAgeNoticeDialog() {
+        val view = LayoutInflater.from(this).inflate(R.layout.age_notice, null, false)
+        val checkBox = view.findViewById<CheckBox>(R.id.cb_agree) // XML id와 동일
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(view)
+            .setCancelable(false)
+            .create()
+
+        // 체크박스 선택 시 팝업창 닫기
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) dialog.dismiss()
+        }
+
+        dialog.show()
+
+        // 팝업창 크기 조정
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
     }
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
