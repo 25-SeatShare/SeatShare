@@ -37,17 +37,19 @@ android {
 }
 
 dependencies {
+    // BoM을 32.2.x대로 낮춰 Auth 22.x를 사용 (예: 22.3.1)
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0")) // Database 21.0.1 포함
+    implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
-    implementation("com.google.firebase:firebase-auth")
 
- // Firestore 사용 시
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

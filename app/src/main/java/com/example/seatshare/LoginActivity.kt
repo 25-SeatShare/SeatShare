@@ -2,67 +2,73 @@ package com.example.seatshare
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var emailEt: EditText
+    private lateinit var pwEt: EditText
+    private lateinit var loginBtn: Button
+    private lateinit var goSignup: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.login_main)
 
+        // FirebaseAuth 인스턴스
         auth = FirebaseAuth.getInstance()
 
-        // 로그인 버튼
-        val emailInput = findViewById<EditText>(R.id.email)
-        val pwInput = findViewById<EditText>(R.id.password)
-        val loginButton = findViewById<Button>(R.id.login_button)
-        val tvSignup = findViewById<TextView>(R.id.go_signup)
+        // View 연결
+        emailEt = findViewById(R.id.email)
+        pwEt = findViewById(R.id.password)
+        loginBtn = findViewById(R.id.login_button)
+        goSignup = findViewById(R.id.go_signup)
 
-        // 로그인 처리
-        loginButton.setOnClickListener {
-            val email = emailInput.text.toString()
-            val password = pwInput.text.toString()
+        // 회원가입 화면 이동
+        goSignup.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        // 로그인 버튼 클릭 시
+        loginBtn.setOnClickListener {
+            val email = emailEt.text.toString().trim()
+            val pw = pwEt.text.toString().trim()
+
+            if (email.isBlank() || pw.isBlank()) {
+                toast("이메일과 비밀번호를 모두 입력하세요.")
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, pw)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                        val user = auth.currentUser
+                        if (user != null) {
+                            if (user.isEmailVerified) {
+                                // 로그인 성공
+                                toast("로그인 성공!")
+                                startActivity(Intent(this, MainActivity::class.java))
+                                finish()
+                            } else {
+                                // 이메일 미인증
+                                toast("이메일 인증 후 로그인 가능합니다.")
+                                auth.signOut()
+                            }
+                        } else {
+                            toast("사용자 정보를 불러올 수 없습니다.")
+                        }
                     } else {
-                        Toast.makeText(this, "로그인 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        // 로그인 실패 (Firebase에 계정이 없거나 비밀번호 오류)
+                        toast("로그인 실패! 이메일 또는 비밀번호를 확인하세요.")
                     }
                 }
         }
-
-        // 회원가입 화면으로 이동
-        tvSignup.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
-        }
-
-        // EdgeInsets 설정 유지
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
+
+    private fun toast(msg: String) =
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
