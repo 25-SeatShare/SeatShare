@@ -117,7 +117,8 @@ class SignUpActivity : AppCompatActivity() {
                 "uid" to user.uid,
                 "name" to nameEt.text.toString(),
                 "email" to (user.email ?: ""),
-                "createdAt" to System.currentTimeMillis()
+                "createdAt" to System.currentTimeMillis(),
+                "points" to 5L
             )
 
             // 🔹 1차: Firestore에 저장
