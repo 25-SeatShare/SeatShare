@@ -120,16 +120,27 @@ class SignUpActivity : AppCompatActivity() {
                 "createdAt" to System.currentTimeMillis()
             )
 
+            // 🔹 1차: Firestore에 저장
             db.collection("users").document(user.uid)
                 .set(profile)
                 .addOnSuccessListener {
-                    toast("회원가입이 완료되었어요!")
-                    // TODO: 메인으로 이동
-                    // startActivity(Intent(this, MainActivity::class.java))
-                    // finish()
+                    // 🔹 2차: Firestore 저장 성공 후 Realtime Database에도 저장
+                    val realtimeDb = FirebaseDatabase.getInstance()
+                    val userRef = realtimeDb.getReference("users").child(user.uid)
+
+                    userRef.setValue(profile)
+                        .addOnSuccessListener {
+                            toast("회원가입이 완료되었어요! (Firestore + Realtime DB 저장)")
+                            // TODO: 메인으로 이동
+                            // startActivity(Intent(this, MainActivity::class.java))
+                            // finish()
+                        }
+                        .addOnFailureListener { e ->
+                            toast("회원가입은 되었지만, Realtime DB 저장에 실패했어요: ${e.localizedMessage}")
+                        }
                 }
                 .addOnFailureListener { e ->
-                    toast("프로필 저장 실패: ${e.localizedMessage}")
+                    toast("프로필 저장 실패(Firestore): ${e.localizedMessage}")
                 }
         }
     }
