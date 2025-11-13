@@ -2,10 +2,35 @@ package com.example.seatshare
 
 import android.content.Intent
 import android.os.Bundle
+
+//추가
+import android.util.Log
+
 import android.widget.*
+
+// 추가
+import android.view.LayoutInflater
+import android.view.WindowManager
+import android.graphics.Color
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
+import android.text.style.ForegroundColorSpan
+import android.content.SharedPreferences
+
 import androidx.appcompat.app.AppCompatActivity
+
+//추가
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.app.AlertDialog
+
 import com.google.firebase.auth.FirebaseAuth
 
+//추가
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
 
@@ -14,10 +39,22 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var pwEt: EditText
     private lateinit var loginBtn: Button
     private lateinit var goSignup: TextView
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.login_main)
+
+        // SharedPreferences 초기화
+        prefs = getSharedPreferences("AppNoticePrefs", MODE_PRIVATE)
+
+        // "다시 보지 않기" 상태 확인 후 필요할 때만 팝업창 표시
+        val skipNotice = prefs.getBoolean("skip_notice", false)
+        if (!skipNotice) {
+            showAppNoticeDialog()
+        }
+
 
         // FirebaseAuth 인스턴스
         auth = FirebaseAuth.getInstance()
@@ -67,6 +104,61 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    // 안내사항 팝업
+    private fun showAppNoticeDialog() {
+        val view = LayoutInflater.from(this).inflate(R.layout.app_notice, null, false)
+        val btnCheck = view.findViewById<Button>(R.id.bt_check)
+        val cbSkip   = view.findViewById<CheckBox>(R.id.cb_skip)
+
+        // TextView 찾기
+        val textView = view.findViewById<TextView>(R.id.tv_subway)
+
+        // Text 부분 색상 적용
+        val text = "1. 7호선 군자역-이수역(총신대) 구간만 제한적으로 시행하고 있습니다."
+        val spannable = SpannableString(text)
+        val target = "7호선 군자역-이수역(총신대)"
+        val start = text.indexOf(target)
+        if (start >= 0) {
+            val end = start + target.length
+
+            // 부분만 카키색
+            spannable.setSpan(
+                ForegroundColorSpan(Color.parseColor("#556B2F")),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            // 부분 볼드체
+            spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                start, end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+        textView.text = spannable
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(view)
+            .setCancelable(false)   // 뒤로가기/바깥터치로 닫히지 않게
+            .create()
+
+        // 확인 버튼 누르면 체크 상태 저장 후 팝업 닫기
+        btnCheck.setOnClickListener {
+            val skip = cbSkip.isChecked
+            prefs.edit().putBoolean("skip_notice", skip).apply()
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+        // 팝업 크기 조정
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+
     }
 
     private fun toast(msg: String) =
