@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                             if (user.isEmailVerified) {
                                 // 로그인 성공
                                 toast("로그인 성공!")
-                                startActivity(Intent(this, MainActivity::class.java))
+                                startActivity(Intent(this, MyInfo2Activity::class.java))
                                 finish()
                             } else {
                                 // 이메일 미인증
