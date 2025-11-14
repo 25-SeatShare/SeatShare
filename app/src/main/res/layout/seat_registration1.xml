@@ -5,21 +5,21 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <!-- 뒤로가기 -->
     <TextView
         android:id="@+id/seat_registration1_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="< 뒤로가기"
+        android:text="뒤로가기"
         android:textSize="18dp"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"/>
-
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height= "wrap_content"
-        android:layout_weight="0.05"
         android:baselineAligned="true"
         android:paddingTop="30dp"
         android:paddingLeft="18dp"
@@ -27,6 +27,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
+        <!-- 승하차역 선택 텍스트 -->
         <TextView
             android:id="@+id/select_station_text"
             android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
             android:textSize="30dp"
             android:textStyle="bold" />
 
+        <!-- 줄 이미지 -->
         <ImageView
             android:id="@+id/line_image"
             android:layout_width="wrap_content"
@@ -42,43 +44,289 @@
             android:src="@drawable/line"
             android:layout_marginTop="10dp"/>
 
+        <!-- 경로 선택 안내 텍스트 -->
         <TextView
             android:id="@+id/select_station_notice_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="승차역과 하자역을 눌러 경로를 선택해주세요"
+            android:text="승차역과 하차역을 눌러 경로를 선택해주세요"
             android:textSize="15dp"
             android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- 공백 채우기 -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height= "wrap_content"
-        android:layout_weight="0.95"
-        android:baselineAligned="true">
+        android:layout_height="100dp"
+        />
 
+    <!-- 7호선 라인1 (아이콘 줄) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 갈색 7호선 선 -->
         <ImageView
-            android:id="@+id/han_river_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/han_river" />
+            android:src="@drawable/line_number7" />
+
+        <!-- 역 버튼 배열 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="33dp"
+            android:paddingRight="25dp">
+
+            <ImageView
+                android:id="@+id/isu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/naebang"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/expressbusterminal"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/banpo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/nonhyeon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/hakdong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline" />
+        </LinearLayout>
+    </FrameLayout>
 
 
+    <!-- 7호선 라인1 (텍스트 줄) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="33dp"
+        android:paddingRight="25dp">
+
+        <TextView
+            android:id="@+id/isu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="이수"
+            android:layout_marginRight="33dp" />
+
+        <TextView
+            android:id="@+id/naebang_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="내방"
+            android:layout_marginRight="36dp" />
+
+        <TextView
+            android:id="@+id/expressbusterminal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="고속\n터미널"
+            android:layout_marginRight="33dp"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/banpo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="반포"
+            android:layout_marginRight="33dp" />
+
+        <TextView
+            android:id="@+id/nonhyeon_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="논현"
+            android:layout_marginRight="33dp" />
+
+        <TextView
+            android:id="@+id/hakdong_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="학동" />
     </LinearLayout>
 
 
+
+
+    <!-- 7호선 아이콘 -->
+    <ImageView
+        android:id="@+id/line7_icon1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line7_icon"
+        android:paddingBottom="40dp"
+        android:paddingTop="20dp"/>
+
+    <!-- 7호선 라인2 (아이콘 줄) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 갈색 7호선 선 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/line_number7" />
+
+        <!-- 역 버튼 배열 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="33dp"
+            android:paddingRight="25dp">
+
+            <ImageView
+                android:id="@+id/gunja"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/jayang"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/childrensgrandpark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/konkukuniv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/cheongdam"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline"
+                android:layout_marginRight="33dp" />
+
+            <ImageView
+                android:id="@+id/gangnam"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/station_circle_outline" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+    <!-- 7호선 라인2 (텍스트 줄) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="33dp"
+        android:paddingRight="25dp">
+
+        <TextView
+            android:id="@+id/gunja_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="33dp"
+            android:text="군자"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/jayang_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="자양"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/childrensgrandpark_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="33dp"
+            android:text="어린이\n대공원"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/konkukuniv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="33dp"
+            android:text="건대\n입구"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/cheongdam_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="38dp"
+            android:text="청담"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/gangnam_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강남구청"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <!-- 다음으로 버튼 -->
     <Button
         android:id="@+id/seat_registration1_select_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="다음으로"
-        android:backgroundTint="#3A83BF"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="35dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
-         />
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#3A83BF"
+        android:text="다음으로" />
 
 </LinearLayout>

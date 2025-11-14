@@ -9,10 +9,11 @@
         android:id="@+id/seat_registration2_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="< 뒤로가기"
+        android:text="뒤로가기"
         android:textSize="18dp"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
 
 
     <LinearLayout
@@ -25,7 +26,8 @@
         android:paddingLeft="18dp"
         android:paddingRight="18dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp">
 
         <TextView
             android:id="@+id/check_station_text"
@@ -46,25 +48,96 @@
             android:id="@+id/check_station_notice_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="승차역과 하자역을 확인하고 시간표를 선택해주세요"
+            android:text="승차역과 하차역을 확인하고 시간표를 선택해주세요"
             android:textSize="15dp"
             android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 
+
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height= "wrap_content"
-        android:layout_weight="1"
-        android:baselineAligned="true">
+        android:background="@drawable/design1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/departure_pin2_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/departure_pin2"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/departure_station_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출발역"
+            android:textSize="20dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/line_number7_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7호선"
+            android:textSize="20dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:background="@drawable/design1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/arrive_pin2_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrive_pin2"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/arrive_station_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="하차역"
+            android:textSize="20dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/line_number7_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7호선"
+            android:textSize="20dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
 
     </LinearLayout>
 
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height= "wrap_content"
         android:layout_weight="0.5"
@@ -78,6 +151,192 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height= "wrap_content"
+            android:paddingLeft="15dp"
+            android:baselineAligned="true">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height= "wrap_content"
+                android:layout_marginTop="43dp"
+                android:baselineAligned="true"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/line_number7_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7호선"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#7A7F50"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/departure_station_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="출발역"
+                    android:textSize="20dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:id="@+id/departure_station_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="승차"
+                    android:textSize="20dp" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/time_list_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/time_list_background"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                >
+
+                <!-- 열차 1 -->
+                <LinearLayout
+                    android:id="@+id/time_item_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:background="@drawable/time_list_select">
+
+                    <TextView
+                        android:id="@+id/time_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시간1"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/destination_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="열차1"
+                        android:textSize="18dp"
+                        android:textColor="#555555"/>
+                </LinearLayout>
+
+                <!-- 열차 2 -->
+                <LinearLayout
+                    android:id="@+id/time_item_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:background="@drawable/time_list_select">
+
+                    <TextView
+                        android:id="@+id/time_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시간2"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/destination_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="열차2"
+                        android:textSize="18dp"
+                        android:textColor="#555555"/>
+                </LinearLayout>
+
+                <!-- 열차 3 -->
+                <LinearLayout
+                    android:id="@+id/time_item_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:background="@drawable/time_list_select">
+
+                    <TextView
+                        android:id="@+id/time_text_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시간3"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/destination_text_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="열차3"
+                        android:textSize="18dp"
+                        android:textColor="#555555"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height= "wrap_content"
+                android:layout_marginTop="20dp"
+                android:baselineAligned="true"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/line_number7_text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7호선"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#7A7F50"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/arrive_station_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="하차역"
+                    android:textSize="20dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:id="@+id/arrive_station_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="하차"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
 
 
     </LinearLayout>

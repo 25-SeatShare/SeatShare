@@ -14,43 +14,43 @@
         android:id="@+id/logo_1"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/logo_1"
         android:layout_marginTop="120dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/logo_1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
         android:text="오늘도 안전한 지하철 이용 되세요!"
-        android:textSize="17dp"
-        android:layout_marginBottom="80dp"/>
+        android:textSize="17dp" />
 
     <android.widget.Button
         android:id="@+id/btn_seat_registration"
         android:layout_width="263dp"
         android:layout_height="60dp"
         android:layout_marginBottom="15dp"
-        android:text="좌석 등록"
         android:background="@drawable/design_home_btn"
+        android:text="좌석 등록"
         android:textSize="17dp" />
 
     <android.widget.Button
         android:id="@+id/btn_seat_check"
         android:layout_width="263dp"
         android:layout_height="60dp"
-        android:text="좌석 조회"
-        android:textSize="17dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/design_home_btn"
-        android:layout_marginBottom="15dp"/>
+        android:text="좌석 조회"
+        android:textSize="17dp" />
 
     <android.widget.Button
         android:id="@+id/btn_get_off"
         android:layout_width="263dp"
         android:layout_height="60dp"
+        android:background="@drawable/design_home_btn"
         android:text="하차 인증"
-        android:textSize="17dp"
-        android:background="@drawable/design_home_btn"/>
+        android:textSize="17dp" />
 
     <!-- 내비게이션 바 -->
     <View
@@ -62,14 +62,14 @@
         android:id="@+id/home_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3A83BF"
-        android:elevation="8dp"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
+        android:background="#3A83BF"
+        android:clipToPadding="false"
+        android:elevation="8dp"
         android:gravity="top"
-        android:weightSum="3"
+        android:orientation="horizontal"
         android:padding="0dp"
-        android:clipToPadding="false">
+        android:weightSum="3">
 
         <Button
             android:id="@+id/btn_seat_info"
@@ -88,10 +88,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:gravity="center"
             android:text="포인트"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:gravity="center"/>
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_mypage"
@@ -99,10 +99,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:gravity="center"
             android:text="마이페이지"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:gravity="center"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 
