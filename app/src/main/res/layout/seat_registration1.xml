@@ -1,0 +1,84 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/seat_registration1_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="< 뒤로가기"
+        android:textSize="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"/>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:layout_weight="0.05"
+        android:baselineAligned="true"
+        android:paddingTop="30dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/select_station_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승하차역 선택"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/line_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/select_station_notice_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승차역과 하자역을 눌러 경로를 선택해주세요"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:layout_weight="0.95"
+        android:baselineAligned="true">
+
+        <ImageView
+            android:id="@+id/han_river_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/han_river" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/seat_registration1_select_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다음으로"
+        android:backgroundTint="#3A83BF"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+         />
+
+</LinearLayout>
