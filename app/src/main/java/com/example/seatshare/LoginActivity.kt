@@ -2,13 +2,8 @@ package com.example.seatshare
 
 import android.content.Intent
 import android.os.Bundle
-
-//추가
 import android.util.Log
-
 import android.widget.*
-
-// 추가
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.graphics.Color
@@ -18,18 +13,12 @@ import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.text.style.ForegroundColorSpan
 import android.content.SharedPreferences
-
 import androidx.appcompat.app.AppCompatActivity
-
-//추가
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.appcompat.app.AlertDialog
-
 import com.google.firebase.auth.FirebaseAuth
-
-//추가
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
