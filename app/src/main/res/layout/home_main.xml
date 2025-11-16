@@ -58,7 +58,7 @@
     <!-- 내비게이션 바 -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="55dp"
         android:layout_weight="1" />
 
     <LinearLayout
