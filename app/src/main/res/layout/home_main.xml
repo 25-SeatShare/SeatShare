@@ -26,6 +26,7 @@
         android:text="오늘도 안전한 지하철 이용 되세요!"
         android:textSize="17dp" />
 
+    <!-- 좌석 등록 버튼-->
     <android.widget.Button
         android:id="@+id/btn_seat_registration"
         android:layout_width="263dp"
@@ -35,6 +36,7 @@
         android:text="좌석 등록"
         android:textSize="17dp" />
 
+    <!-- 좌석 조회 버튼 -->
     <android.widget.Button
         android:id="@+id/btn_seat_check"
         android:layout_width="263dp"
@@ -44,6 +46,7 @@
         android:text="좌석 조회"
         android:textSize="17dp" />
 
+    <!-- 하차 인증 버튼 -->
     <android.widget.Button
         android:id="@+id/btn_get_off"
         android:layout_width="263dp"
@@ -71,6 +74,7 @@
         android:padding="0dp"
         android:weightSum="3">
 
+        <!-- 좌석 정보 버튼 -->
         <Button
             android:id="@+id/btn_seat_info"
             android:layout_width="0dp"
@@ -82,6 +86,7 @@
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
+        <!-- 포인트 버튼 -->
         <Button
             android:id="@+id/btn_point"
             android:layout_width="0dp"
@@ -93,6 +98,7 @@
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
+        <!-- 마이페이지 버튼 -->
         <Button
             android:id="@+id/btn_mypage"
             android:layout_width="0dp"

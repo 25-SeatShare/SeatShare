@@ -12,7 +12,7 @@
 
         <!-- 뒤로가기 -->
         <TextView
-            android:id="@+id/tv_back"
+            android:id="@+id/find_pw_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="&lt; 뒤로가기"
@@ -23,7 +23,7 @@
 
         <!-- 이름 라벨 -->
         <TextView
-            android:id="@+id/tv_name_label"
+            android:id="@+id/find_pw_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -31,11 +31,11 @@
             android:textSize="14sp"
             android:textColor="#333333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_back" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_back" />
 
         <!-- 이름 EditText -->
         <EditText
-            android:id="@+id/et_name"
+            android:id="@+id/find_pw_name"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
@@ -44,11 +44,11 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_label" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_name_label" />
 
         <!-- 이메일 라벨 -->
         <TextView
-            android:id="@+id/tv_email_label"
+            android:id="@+id/find_pw_email_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -56,53 +56,71 @@
             android:textSize="14sp"
             android:textColor="#333333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_name" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_name" />
 
         <!-- 이메일 EditText -->
         <EditText
-            android:id="@+id/et_email"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:paddingHorizontal="16dp"
-            android:background="@drawable/design_input_window2"
-            android:inputType="textEmailAddress"
-            android:enabled="false"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
-
-        <!-- 현재 비밀번호 라벨 -->
-        <TextView
-            android:id="@+id/tv_current_pw_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="현재 비밀번호"
-            android:textSize="14sp"
-            android:textColor="#333333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_email" />
-
-        <!-- 현재 비밀번호 EditText -->
-        <EditText
-            android:id="@+id/et_current_pw"
+            android:id="@+id/find_pw_email"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:paddingHorizontal="16dp"
             android:background="@drawable/design_input_window1"
-            android:hint="현재 비밀번호"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
+            android:enabled="false"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_current_pw_label" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_email_label" />
+
+        <!-- 인증 메일 / 인증 확인 버튼 -->
+        <LinearLayout
+            android:id="@+id/find_pw_email_btn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/find_pw_email">
+
+            <!-- 인증 메일 보내기 버튼-->
+            <Button
+                android:id="@+id/find_pw_send_email_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#E7F1F9"
+                android:text="인증 메일 보내기"
+                android:textColor="#3A83BF"
+                android:textSize="14sp" />
+
+            <!-- 인증 확인 버튼-->
+            <Button
+                android:id="@+id/find_pw_check_email_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#E7F1F9"
+                android:text="인증 확인"
+                android:textColor="#3A83BF"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/find_pw_view"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/find_pw_email_btn"/>
 
         <!-- 새 비밀번호 라벨 -->
         <TextView
-            android:id="@+id/tv_new_pw_label"
+            android:id="@+id/find_pw_new_pw_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -110,11 +128,11 @@
             android:textSize="14sp"
             android:textColor="#333333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_current_pw" />
+            app:layout_constraintTop_toBottomOf="@+id/find_pw_view" />
 
         <!-- 새 비밀번호 EditText -->
         <EditText
-            android:id="@+id/et_new_pw"
+            android:id="@+id/find_pw_new_pw"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
@@ -125,11 +143,11 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_new_pw_label" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_new_pw_label" />
 
         <!-- 새 비밀번호 확인 라벨 -->
         <TextView
-            android:id="@+id/tv_new_pw_check_label"
+            android:id="@+id/find_pw_new_pw_check_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -137,11 +155,11 @@
             android:textSize="14sp"
             android:textColor="#333333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_new_pw" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_new_pw" />
 
         <!-- 새 비밀번호 확인 EditText -->
         <EditText
-            android:id="@+id/et_new_pw_check"
+            android:id="@+id/find_pw_new_pw_check"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
@@ -152,11 +170,11 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_new_pw_check_label" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_new_pw_check_label" />
 
         <!-- 완료 버튼 -->
         <Button
-            android:id="@+id/btn_done"
+            android:id="@+id/find_pw_btn_done"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
@@ -166,18 +184,18 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_new_pw_check" />
+            app:layout_constraintTop_toBottomOf="@id/find_pw_new_pw_check" />
 
-        <!-- 로그아웃 -->
+        <!-- 로그인 -->
         <TextView
-            android:id="@+id/tv_logout"
+            android:id="@+id/find_pw_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="로그아웃"
+            android:text="로그인"
             android:textColor="#666666"
             android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_done"
+            app:layout_constraintTop_toBottomOf="@+id/find_pw_btn_done"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
