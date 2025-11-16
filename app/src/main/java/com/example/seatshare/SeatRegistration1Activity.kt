@@ -43,6 +43,15 @@ class SeatRegistration1Activity : AppCompatActivity() {
         val cheongdam = findViewById<ImageView>(R.id.cheongdam)
         val gangnam = findViewById<ImageView>(R.id.gangnam)
 
+        //지금까지 몇개 클릭했는지 세는 함수
+        fun selectedCount(): Int {
+            val states = listOf(
+                isuState, naebangState, expressState, banpoState, nonhyeonState, hakdongState,
+                gunjaState, jayangeState, childparkState, konkukState, cheongdamState, gangnamState
+            )
+            return states.count { it == 1 || it == 2 }
+        }
+
         // 클릭 시 상태 변경 함수
         fun applyState(btn: ImageView, state: Int): Int {
             val next = (state + 1) % 3
@@ -55,18 +64,101 @@ class SeatRegistration1Activity : AppCompatActivity() {
         }
 
         //클릭했을 때
-        isu.setOnClickListener { isuState = applyState(isu, isuState) }
-        naebang.setOnClickListener { naebangState = applyState(naebang, naebangState) }
-        express.setOnClickListener { expressState = applyState(express, expressState) }
-        banpo.setOnClickListener { banpoState = applyState(banpo, banpoState) }
-        nonhyeon.setOnClickListener { nonhyeonState = applyState(nonhyeon, nonhyeonState) }
-        hakdong.setOnClickListener { hakdongState = applyState(hakdong, hakdongState) }
-        gunja.setOnClickListener { gunjaState = applyState(gunja, gunjaState) }
-        jayange.setOnClickListener { jayangeState = applyState(jayange, jayangeState) }
-        childpark.setOnClickListener { childparkState = applyState(childpark, childparkState) }
-        konkuk.setOnClickListener { konkukState = applyState(konkuk, konkukState) }
-        cheongdam.setOnClickListener { cheongdamState = applyState(cheongdam, cheongdamState) }
-        gangnam.setOnClickListener { gangnamState = applyState(gangnam, gangnamState) }
+        isu.setOnClickListener {
+            if (isuState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            isuState = applyState(isu, isuState)
+        }
+
+        naebang.setOnClickListener {
+            if (naebangState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            naebangState = applyState(naebang, naebangState)
+        }
+
+        express.setOnClickListener {
+            if (expressState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            expressState = applyState(express, expressState)
+        }
+
+        banpo.setOnClickListener {
+            if (banpoState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            banpoState = applyState(banpo, banpoState)
+        }
+
+        nonhyeon.setOnClickListener {
+            if (nonhyeonState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            nonhyeonState = applyState(nonhyeon, nonhyeonState)
+        }
+
+        hakdong.setOnClickListener {
+            if (hakdongState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            hakdongState = applyState(hakdong, hakdongState)
+        }
+
+        gunja.setOnClickListener {
+            if (gunjaState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            gunjaState = applyState(gunja, gunjaState)
+        }
+
+        jayange.setOnClickListener {
+            if (jayangeState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            jayangeState = applyState(jayange, jayangeState)
+        }
+
+        childpark.setOnClickListener {
+            if (childparkState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            childparkState = applyState(childpark, childparkState)
+        }
+
+        konkuk.setOnClickListener {
+            if (konkukState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            konkukState = applyState(konkuk, konkukState)
+        }
+
+        cheongdam.setOnClickListener {
+            if (cheongdamState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            cheongdamState = applyState(cheongdam, cheongdamState)
+        }
+
+        gangnam.setOnClickListener {
+            if (gangnamState == 0 && selectedCount() >= 2) {
+                Toast.makeText(this, "승하차역만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            gangnamState = applyState(gangnam, gangnamState)
+        }
 
         // 다음 버튼: 승차역/하차역 1개씩 찾기
         findViewById<Button>(R.id.seat_registration1_select_button).setOnClickListener {
@@ -105,7 +197,7 @@ class SeatRegistration1Activity : AppCompatActivity() {
 
             // 둘 다 선택했는지 확인
             if (departure == "" || arrive == "") {
-                Toast.makeText(this, "승차역(초록)과 하차역(빨강)을 선택해주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "승차역과 하차역을 선택해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -114,6 +206,7 @@ class SeatRegistration1Activity : AppCompatActivity() {
             intent.putExtra("departure", departure)
             intent.putExtra("arrive", arrive)
             startActivity(intent)
+
         }
 
         // 뒤로가기

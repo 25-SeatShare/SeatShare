@@ -1,6 +1,848 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 뒤로가기 -->
+    <TextView
+        android:id="@+id/seat_registration4_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="뒤로가기"
+        android:textSize="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:baselineAligned="true"
+        android:paddingTop="30dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <!-- 승하차역 선택 텍스트 -->
+        <TextView
+            android:id="@+id/select_seat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="탑승좌석 선택"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <!-- 줄 이미지 -->
+        <ImageView
+            android:id="@+id/line_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+            android:layout_marginTop="10dp"/>
+
+        <!-- 경로 선택 안내 텍스트 -->
+        <TextView
+            android:id="@+id/select_platform_notice_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="탑승할 좌석을 확인하고 선택해주세요"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <!-- 페이지 표시 줄 -->
+    <LinearLayout
+        android:id="@+id/seat_page_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="120dp"
+        android:paddingRight="120dp"
+        android:paddingTop="25dp">
+
+        <!-- 1-1 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/page_1_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/subway_platform_image2"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/page_1_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="n-1"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000000"/>
+        </FrameLayout>
+
+        <!-- 1-2 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/page_2_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/subway_platform_image1"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/page_2_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="n-2"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000000"/>
+        </FrameLayout>
+
+        <!-- 1-3 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/page_3_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/subway_platform_image1"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/page_3_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="n-3"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000000"/>
+        </FrameLayout>
+
+        <!-- 1-4 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/page_4_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/subway_platform_image3"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/page_4_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="n-4"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000000"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="8"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <!-- 왼쪽 화살표 -->
+        <ImageButton
+            android:id="@+id/btn_prev"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/arrow_left" />
+
+        <!-- 오른쪽 화살표 -->
+        <ImageButton
+            android:id="@+id/btn_next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/arrow_right" />
+
+        <!-- ViewFlipper -->
+        <ViewFlipper
+            android:id="@+id/seat_flipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <!-- 1-1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- 왼쪽 열 -->
+
+                <!-- 오른쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <!-- 좌석 1~7 -->
+                    <android.widget.Button
+                        android:id="@+id/seat_left_1_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="1"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_2_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="2"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_3_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="3"
+                        android:textSize="13dp" />
+
+                    <!-- 위 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="20dp">
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_4_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="4"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_5_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="5"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_6_1"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="6"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 1-2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- 왼쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <!-- 위 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+                    <!-- 좌석 1~7 -->
+                    <android.widget.Button
+                        android:id="@+id/seat_left_1_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="1"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_2_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="2"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_3_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="3"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_4_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="4"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_5_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="5"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_6_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="6"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_7_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="7"
+                        android:textSize="13dp" />
+
+                    <!-- 아래 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+                </LinearLayout>
+
+                <!-- 오른쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_8_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="8"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_9_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="9"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_10_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="10"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_11_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="11"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_12_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="12"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_13_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="13"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_14_2"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="14"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- 1-3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- 왼쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <!-- 위 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+                    <!-- 좌석 1~7 -->
+                    <android.widget.Button
+                        android:id="@+id/seat_left_1_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="1"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_2_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="2"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_3_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="3"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_4_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="4"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_5_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="5"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_6_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="6"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_7_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="7"
+                        android:textSize="13dp" />
+
+                    <!-- 아래 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+                </LinearLayout>
+
+                <!-- 오른쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_8_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="8"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_9_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="9"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_10_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="10"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_11_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="11"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_12_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="12"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_13_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="13"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_14_3"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="14"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 1-4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- 왼쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <!-- 윗 문 -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_left" />
+
+                    <!-- 좌석 1~3 -->
+                    <android.widget.Button
+                        android:id="@+id/seat_left_1_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="1"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_2_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="2"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_left_3_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="3"
+                        android:textSize="13dp" />
+
+
+                </LinearLayout>
+
+                <!-- 오른쪽 열 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/subway_door_right" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_4_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="4"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_5_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="5"
+                        android:textSize="13dp" />
+
+                    <android.widget.Button
+                        android:id="@+id/seat_right_6_4"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/seat_button"
+                        android:text="6"
+                        android:textSize="13dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ViewFlipper>
+    </RelativeLayout>
+
+
+    <!-- 다음으로 버튼 -->
+    <Button
+        android:id="@+id/seat_registration4_select_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다음으로"
+        android:backgroundTint="#3A83BF"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</LinearLayout>

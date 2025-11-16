@@ -38,7 +38,11 @@ class SeatRegistration2Activity : AppCompatActivity() {
         //다음 버튼
         val nextBtn = findViewById<TextView>(R.id.seat_registration2_select_button)
         nextBtn.setOnClickListener {
-            startActivity(Intent(this, SeatRegistration3Activity::class.java))
+            //3으로 넘기기
+            val intent = Intent(this, SeatRegistration3Activity::class.java)
+            intent.putExtra("departure", departure)
+            intent.putExtra("arrive", arrive)
+            startActivity(intent)
         }
 
         //뒤로가기 버튼

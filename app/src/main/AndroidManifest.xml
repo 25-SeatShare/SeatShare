@@ -32,5 +32,6 @@
         <activity android:name=".SeatRegistration2Activity" />
         <activity android:name=".SeatRegistration3Activity" />
         <activity android:name=".SeatRegistration4Activity" />
+        <activity android:name=".SeatRegistration5Activity" />
     </application>
 </manifest>

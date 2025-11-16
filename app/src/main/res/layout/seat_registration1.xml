@@ -58,7 +58,8 @@
     <!-- 공백 채우기 -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
 
     <!-- 7호선 라인1 (아이콘 줄) -->
@@ -140,7 +141,8 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="이수"
-            android:layout_marginRight="33dp" />
+            android:layout_marginRight="33dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/naebang_text"
@@ -148,7 +150,8 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="내방"
-            android:layout_marginRight="36dp" />
+            android:layout_marginRight="36dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/expressbusterminal_text"
@@ -156,8 +159,9 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="고속\n터미널"
-            android:layout_marginRight="33dp"
-            android:padding="3dp"/>
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/banpo_text"
@@ -165,7 +169,8 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="반포"
-            android:layout_marginRight="33dp" />
+            android:layout_marginRight="33dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/nonhyeon_text"
@@ -173,18 +178,17 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="논현"
-            android:layout_marginRight="33dp" />
+            android:layout_marginRight="33dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/hakdong_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:text="학동" />
+            android:text="학동"
+            android:textStyle="bold"/>
     </LinearLayout>
-
-
-
 
     <!-- 7호선 아이콘 -->
     <ImageView
@@ -192,8 +196,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/line7_icon"
-        android:paddingBottom="40dp"
-        android:paddingTop="20dp"/>
+        android:paddingBottom="70dp"
+        android:paddingTop="60dp"/>
+
+
 
     <!-- 7호선 라인2 (아이콘 줄) -->
     <FrameLayout
@@ -273,9 +279,10 @@
             android:id="@+id/gunja_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="35dp"
             android:text="군자"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/jayang_text"
@@ -283,15 +290,17 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:text="자양"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/childrensgrandpark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="31dp"
             android:text="어린이\n대공원"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/konkukuniv_text"
@@ -299,7 +308,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="33dp"
             android:text="건대\n입구"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/cheongdam_text"
@@ -307,15 +317,24 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="38dp"
             android:text="청담"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/gangnam_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="강남구청"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"/>
     </LinearLayout>
+
+    <!-- 공백 채우기 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 
     <!-- 다음으로 버튼 -->
     <Button
@@ -323,7 +342,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+
         android:layout_marginRight="20dp"
         android:layout_marginBottom="35dp"
         android:backgroundTint="#3A83BF"

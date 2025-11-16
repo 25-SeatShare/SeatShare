@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="출발역"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7호선"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="하차역"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7호선"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -182,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="출발역"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
@@ -190,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="승차"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -212,6 +212,7 @@
                     android:layout_height="45dp"
                     android:orientation="horizontal"
                     android:paddingLeft="12dp"
+                    android:paddingTop="10dp"
                     android:gravity="center_vertical"
                     android:clickable="true"
                     android:background="@drawable/time_list_select">
@@ -221,7 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="시간1"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textStyle="bold"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"/>
@@ -231,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차1"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textColor="#555555"/>
                 </LinearLayout>
 
@@ -252,7 +253,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="시간2"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textStyle="bold"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"/>
@@ -262,7 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차2"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textColor="#555555"/>
                 </LinearLayout>
 
@@ -273,6 +274,7 @@
                     android:layout_height="45dp"
                     android:orientation="horizontal"
                     android:paddingLeft="12dp"
+                    android:paddingBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
                     android:clickable="true"
@@ -283,7 +285,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="시간3"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textStyle="bold"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"/>
@@ -293,7 +295,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차3"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:textColor="#555555"/>
                 </LinearLayout>
 
@@ -322,7 +324,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="하차역"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
@@ -330,7 +332,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="하차"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
 
             </LinearLayout>
 
