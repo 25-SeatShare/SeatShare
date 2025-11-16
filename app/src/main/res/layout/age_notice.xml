@@ -10,6 +10,7 @@
         android:layout_gravity="center"
         android:padding="30dp">
 
+        <!-- 유의사항 제목 -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -20,6 +21,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="35dp" />
 
+        <!-- 유의사항 내용 -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,6 +63,7 @@
             android:background="#E0E0E0"
             android:layout_marginBottom="16dp" />
 
+        <!-- 유의사항 동의 체크박스 -->
         <CheckBox
             android:id="@+id/cb_agree"
             android:layout_width="match_parent"
