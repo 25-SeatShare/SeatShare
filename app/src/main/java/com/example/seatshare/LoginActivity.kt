@@ -54,6 +54,12 @@ class LoginActivity : AppCompatActivity() {
         loginBtn = findViewById(R.id.login_button)
         goSignup = findViewById(R.id.go_signup)
 
+        // 비밀번호 찾기 이동
+        val findPassword = findViewById<TextView>(R.id.find_password)
+        findPassword.setOnClickListener {
+            startActivity(Intent(this, FindPWActivity::class.java))
+        }
+
         // 회원가입 화면 이동
         goSignup.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))

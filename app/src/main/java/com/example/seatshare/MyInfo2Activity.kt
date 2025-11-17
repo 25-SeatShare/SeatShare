@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Intent
+
 
 class MyInfo2Activity : AppCompatActivity() {
 
@@ -51,6 +53,13 @@ class MyInfo2Activity : AppCompatActivity() {
         logoutTv.setOnClickListener {
             auth.signOut()
             Toast.makeText(this, "로그아웃되었습니다.", Toast.LENGTH_SHORT).show()
+
+            // LoginActivity로 이동
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
 

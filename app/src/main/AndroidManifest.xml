@@ -34,5 +34,6 @@
         <activity android:name=".SeatRegistration3Activity" />
         <activity android:name=".SeatRegistration4Activity" />
         <activity android:name=".SeatRegistration5Activity" />
+        <activity android:name=".FindPWActivity" />
     </application>
 </manifest>

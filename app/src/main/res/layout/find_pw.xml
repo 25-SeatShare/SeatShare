@@ -188,7 +188,7 @@
 
         <!-- 로그인 -->
         <TextView
-            android:id="@+id/find_pw_logout"
+            android:id="@+id/find_pw_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
