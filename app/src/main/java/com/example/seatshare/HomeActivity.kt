@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
         val myPageBtn = findViewById<Button>(R.id.btn_mypage)
 
         myPageBtn.setOnClickListener {
-            val intent = Intent(this, MyInfo2Activity::class.java)
+            val intent = Intent(this, MyInfo1Activity::class.java)
             startActivity(intent)
         }
 

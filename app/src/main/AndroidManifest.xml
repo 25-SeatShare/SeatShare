@@ -27,6 +27,7 @@
 
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".MyInfo1Activity" />
         <activity android:name=".MyInfo2Activity" />
         <activity android:name=".SeatRegistration1Activity" />
         <activity android:name=".SeatRegistration2Activity" />

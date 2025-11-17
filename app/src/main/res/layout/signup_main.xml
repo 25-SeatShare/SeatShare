@@ -54,39 +54,27 @@
         android:padding="18dp"
         android:singleLine="true" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-        <EditText
-            android:id="@+id/sign_up_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="이메일을 입력하세요"
-            android:inputType="textEmailAddress"
-            android:padding="18dp"
-            android:singleLine="true" />
-
-        <Button
-            android:id="@+id/certi_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:backgroundTint="#E7F1F9"
-            android:text="인증메일 보내기"
-            android:textColor="#3A83BF"
-            android:textSize="12sp" />
-    </FrameLayout>
-
-    <!-- 2단계: 인증 확인 -->
-    <Button
-        android:id="@+id/certi_check_button"
+    <EditText
+        android:id="@+id/birthEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="인증 확인"
-        android:backgroundTint="#E7F1F9"
-        android:textColor="#3A83BF" />
+        android:hint="생년월일 (YYYY-MM-DD)"
+        android:inputType="date"
+        android:maxLength="10"
+        android:padding="18dp" />
+
+    <EditText
+        android:id="@+id/sign_up_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이메일을 입력하세요"
+        android:inputType="textEmailAddress"
+        android:padding="18dp"
+        android:singleLine="true" />
+
+
+
+    <!-- 2단계: 인증 확인 -->
 
     <!-- 비밀번호: 기존 GONE -> 보이도록 변경 (표준 Firebase 플로우 호환) -->
     <EditText
@@ -108,15 +96,44 @@
         android:singleLine="true" />
 
     <!-- 최종 완료 버튼: 처음엔 비활성화 -->
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
+
+    <Button
+        android:id="@+id/certi_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="#E7F1F9"
+        android:text="인증메일 보내기"
+        android:textColor="#3A83BF"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/certi_check_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E7F1F9"
+        android:text="인증 확인"
+        android:textColor="#3A83BF"
+        android:textSize="18dp" />
+
+</LinearLayout>
+
     <Button
         android:id="@+id/signup_done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#3A83BF"
+        android:enabled="false"
         android:padding="15dp"
         android:text="확인"
-        android:textColor="#FFFFFF"
-        android:enabled="false" />
+        android:textColor="#FFFFFF" />
+
 
 </LinearLayout>

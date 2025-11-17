@@ -1,19 +1,14 @@
 package com.example.seatshare
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import android.widget.CheckBox
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.ActionCodeSettings
-import com.google.firebase.auth.EmailAuthProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +25,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var sendBtn: Button
     private lateinit var checkBtn: Button
     private lateinit var doneBtn: Button
+    private lateinit var birthEt: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +37,7 @@ class SignUpActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+        // View 초기화
         nameEt = findViewById(R.id.sign_up_name)
         emailEt = findViewById(R.id.sign_up_email)
         pwEt = findViewById(R.id.sign_up_pw)
@@ -48,17 +45,30 @@ class SignUpActivity : AppCompatActivity() {
         sendBtn = findViewById(R.id.certi_button)
         checkBtn = findViewById(R.id.certi_check_button)
         doneBtn = findViewById(R.id.signup_done)
+        birthEt = findViewById(R.id.birthEditText)   // ✅ 생년월일 입력칸
 
-        // 1) 인증메일 보내기 (= 계정 생성 + 인증메일 발송)
+        // 1) 인증메일 보내기 (계정 생성 + 인증메일 발송)
         sendBtn.setOnClickListener {
             val email = emailEt.text.toString().trim()
             val pw = pwEt.text.toString()
             val pw2 = pw2Et.text.toString()
 
-            if (nameEt.text.isNullOrBlank()) { toast("이름을 입력하세요."); return@setOnClickListener }
-            if (email.isEmpty()) { toast("이메일을 입력하세요."); return@setOnClickListener }
-            if (pw.length < 6) { toast("비밀번호는 6자 이상이어야 합니다."); return@setOnClickListener }
-            if (pw != pw2) { toast("비밀번호가 일치하지 않습니다."); return@setOnClickListener }
+            if (nameEt.text.isNullOrBlank()) {
+                toast("이름을 입력하세요.")
+                return@setOnClickListener
+            }
+            if (email.isEmpty()) {
+                toast("이메일을 입력하세요.")
+                return@setOnClickListener
+            }
+            if (pw.length < 6) {
+                toast("비밀번호는 6자 이상이어야 합니다.")
+                return@setOnClickListener
+            }
+            if (pw != pw2) {
+                toast("비밀번호가 일치하지 않습니다.")
+                return@setOnClickListener
+            }
 
             auth.createUserWithEmailAndPassword(email, pw)
                 .addOnSuccessListener { result ->
@@ -92,8 +102,8 @@ class SignUpActivity : AppCompatActivity() {
                     user?.reload()?.addOnCompleteListener {
                         if (user?.isEmailVerified == true) {
                             toast("이메일 인증이 확인되었습니다!")
-                            sendBtn.isEnabled = false      // 인증메일 버튼 비활성화
-                            doneBtn.isEnabled = true       // 최종 완료 버튼 활성화
+                            sendBtn.isEnabled = false   // 인증메일 버튼 비활성화
+                            doneBtn.isEnabled = true    // 최종 완료 버튼 활성화
                         } else {
                             toast("아직 인증되지 않았어요. 메일에서 [Verify]를 눌러주세요.")
                             auth.signOut()
@@ -105,7 +115,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
         }
 
-        // 3) 최종 완료
+        // 3) 최종 완료 (프로필 저장 + 포인트/교통약자 계산)
         doneBtn.setOnClickListener {
             val user = auth.currentUser
             if (user == null || user.isEmailVerified != true) {
@@ -113,26 +123,64 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // ✅ 생년월일 입력값 확인
+            val birthStr = birthEt.text.toString().trim()
+            if (birthStr.isEmpty()) {
+                toast("생년월일을 입력하세요. (예: 2003-11-10)")
+                return@setOnClickListener
+            }
+
+            // ✅ YYYY-MM-DD 형식 간단 체크
+            val birthParts = birthStr.split("-")
+            if (birthParts.size != 3) {
+                toast("생년월일 형식을 확인해주세요. (예: 2003-11-10)")
+                return@setOnClickListener
+            }
+
+            val year = birthParts[0].toIntOrNull()
+            val month = birthParts[1].toIntOrNull()
+            val day = birthParts[2].toIntOrNull()
+
+            if (year == null || month == null || day == null) {
+                toast("생년월일은 숫자로 입력해주세요.")
+                return@setOnClickListener
+            }
+
+            // ✅ 나이 계산 (대략적인 방식: 올해 - 태어난 해)
+            val calendar = java.util.Calendar.getInstance()
+            val currentYear = calendar.get(java.util.Calendar.YEAR)
+            val age = currentYear - year
+
+            // ✅ 교통약자(65세 이상) 여부
+            val isTransportVulnerable = age >= 65
+
+            // ✅ 초기 포인트: 교통약자면 20, 아니면 5
+            val initialPoints = if (isTransportVulnerable) 20L else 5L
+
+            // 프로필 맵 생성
             val profile = mapOf(
                 "uid" to user.uid,
                 "name" to nameEt.text.toString(),
                 "email" to (user.email ?: ""),
-                "createdAt" to System.currentTimeMillis(),
-                "points" to 5L
+                "birth" to birthStr,                          // 생년월일 저장
+                "age" to age.toLong(),                        // 계산된 나이 저장
+                "isTransportVulnerable" to isTransportVulnerable, // 교통약자 여부
+                "points" to initialPoints,                    // 포인트 5 or 20
+                "createdAt" to System.currentTimeMillis()
             )
 
-            // 🔹 1차: Firestore에 저장
+            // 1차: Firestore에 저장
             db.collection("users").document(user.uid)
                 .set(profile)
                 .addOnSuccessListener {
-                    // 🔹 2차: Firestore 저장 성공 후 Realtime Database에도 저장
+                    // 2차: Realtime Database에도 저장
                     val realtimeDb = FirebaseDatabase.getInstance()
                     val userRef = realtimeDb.getReference("users").child(user.uid)
 
                     userRef.setValue(profile)
                         .addOnSuccessListener {
                             toast("회원가입이 완료되었어요! (Firestore + Realtime DB 저장)")
-                            // TODO: 메인으로 이동
+                            // TODO: 메인으로 이동 등
                             // startActivity(Intent(this, MainActivity::class.java))
                             // finish()
                         }
@@ -149,7 +197,7 @@ class SignUpActivity : AppCompatActivity() {
     // 유의사항 팝업창
     private fun showAgeNoticeDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.age_notice, null, false)
-        val checkBox = view.findViewById<CheckBox>(R.id.cb_agree) // XML id와 동일
+        val checkBox = view.findViewById<CheckBox>(R.id.cb_agree)
 
         val dialog = AlertDialog.Builder(this)
             .setView(view)
@@ -170,5 +218,6 @@ class SignUpActivity : AppCompatActivity() {
         )
     }
 
-    private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    private fun toast(msg: String) =
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
