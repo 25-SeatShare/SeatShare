@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import edu.sswu.seatshare.R
 
 class SeatRegistration1Activity : AppCompatActivity() {
 

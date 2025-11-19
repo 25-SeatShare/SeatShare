@@ -1,9 +1,6 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.Button
@@ -12,11 +9,10 @@ import android.widget.Toast
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.ActionCodeSettings
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.sswu.seatshare.R
 
 class SignUpActivity : AppCompatActivity() {
 

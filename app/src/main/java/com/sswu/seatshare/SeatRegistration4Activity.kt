@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
+import edu.sswu.seatshare.R
 
 class SeatRegistration4Activity : AppCompatActivity() {
 

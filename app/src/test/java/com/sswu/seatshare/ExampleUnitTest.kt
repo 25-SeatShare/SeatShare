@@ -1,4 +1,4 @@
-package com.example.seatshare
+package com.sswu.seatshare
 
 import org.junit.Test
 

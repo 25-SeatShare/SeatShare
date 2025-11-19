@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.seatshare"
+    namespace = "edu.sswu.seatshare"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.seatshare"
+        applicationId = "edu.sswu.seatshare"
         minSdk = 21
         targetSdk = 36
         versionCode = 1

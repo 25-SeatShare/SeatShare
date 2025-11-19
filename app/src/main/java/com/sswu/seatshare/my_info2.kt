@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.os.Bundle
 import android.widget.*
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.sswu.seatshare.R
 
 class MyInfo2Activity : AppCompatActivity() {
 
