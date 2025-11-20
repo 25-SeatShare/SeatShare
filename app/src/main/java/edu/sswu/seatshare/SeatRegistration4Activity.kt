@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.os.Bundle
@@ -146,7 +146,7 @@ class SeatRegistration4Activity : AppCompatActivity() {
         // 뒤로가기
         val backBtn = findViewById<TextView>(R.id.seat_registration4_back_button)
         backBtn.setOnClickListener {
-            startActivity(Intent(this, SeatRegistration3Activity::class.java))
+            startActivity(Intent(this, edu.sswu.seatshare.SeatRegistration3Activity::class.java))
         }
     }
 }

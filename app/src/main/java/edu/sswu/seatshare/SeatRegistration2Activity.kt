@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.os.Bundle
@@ -39,7 +39,7 @@ class SeatRegistration2Activity : AppCompatActivity() {
         val nextBtn = findViewById<TextView>(R.id.seat_registration2_select_button)
         nextBtn.setOnClickListener {
             //3으로 넘기기
-            val intent = Intent(this, SeatRegistration3Activity::class.java)
+            val intent = Intent(this, edu.sswu.seatshare.SeatRegistration3Activity::class.java)
             intent.putExtra("departure", departure)
             intent.putExtra("arrive", arrive)
             startActivity(intent)

@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.os.Bundle
 import android.view.LayoutInflater
