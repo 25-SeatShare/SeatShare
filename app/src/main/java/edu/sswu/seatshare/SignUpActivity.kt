@@ -1,11 +1,13 @@
 package edu.sswu.seatshare
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +47,13 @@ class SignUpActivity : AppCompatActivity() {
         sendBtn = findViewById(R.id.certi_button)
         checkBtn = findViewById(R.id.certi_check_button)
         doneBtn = findViewById(R.id.signup_done)
-        birthEt = findViewById(R.id.birthEditText)   // ✅ 생년월일 입력칸
+        birthEt = findViewById(R.id.birthEditText)   // 생년월일 입력칸
+
+        val goLogin = findViewById<TextView>(R.id.sign_up_login)
+        goLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
         // 1) 인증메일 보내기 (계정 생성 + 인증메일 발송)
         sendBtn.setOnClickListener {
@@ -123,14 +131,14 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // ✅ 생년월일 입력값 확인
+            // 생년월일 입력값 확인
             val birthStr = birthEt.text.toString().trim()
             if (birthStr.isEmpty()) {
                 toast("생년월일을 입력하세요. (예: 2003-11-10)")
                 return@setOnClickListener
             }
 
-            // ✅ YYYY-MM-DD 형식 간단 체크
+            // YYYY-MM-DD 형식 간단 체크
             val birthParts = birthStr.split("-")
             if (birthParts.size != 3) {
                 toast("생년월일 형식을 확인해주세요. (예: 2003-11-10)")
@@ -146,15 +154,15 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // ✅ 나이 계산 (대략적인 방식: 올해 - 태어난 해)
+            // 나이 계산 (대략적인 방식: 올해 - 태어난 해)
             val calendar = java.util.Calendar.getInstance()
             val currentYear = calendar.get(java.util.Calendar.YEAR)
             val age = currentYear - year
 
-            // ✅ 교통약자(65세 이상) 여부
+            // 교통약자(65세 이상) 여부
             val isTransportVulnerable = age >= 65
 
-            // ✅ 초기 포인트: 교통약자면 20, 아니면 5
+            // 초기 포인트: 교통약자면 20, 아니면 5
             val initialPoints = if (isTransportVulnerable) 20L else 5L
 
             // 프로필 맵 생성
@@ -217,6 +225,7 @@ class SignUpActivity : AppCompatActivity() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
+
 
     private fun toast(msg: String) =
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()

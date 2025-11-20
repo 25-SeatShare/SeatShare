@@ -136,5 +136,13 @@
         android:text="확인"
         android:textColor="#FFFFFF" />
 
+    <TextView
+        android:id="@+id/sign_up_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="로그인"
+        android:layout_marginTop="15dp"/>
+
 
 </LinearLayout>
