@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.os.Bundle
@@ -70,7 +70,7 @@ class SeatRegistration3Activity : AppCompatActivity() {
                 android.widget.Toast.makeText(this, "플랫폼을 선택해주세요", android.widget.Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val intent = Intent(this, SeatRegistration4Activity::class.java)
+            val intent = Intent(this, edu.sswu.seatshare.SeatRegistration4Activity::class.java)
             intent.putExtra("departure", departure)
             intent.putExtra("arrive", arrive)
             intent.putExtra("car_number", selectedCarNumber)
@@ -80,7 +80,7 @@ class SeatRegistration3Activity : AppCompatActivity() {
         // 뒤로가기
         val backBtn = findViewById<TextView>(R.id.seat_registration3_back_button)
         backBtn.setOnClickListener {
-            startActivity(Intent(this, SeatRegistration2Activity::class.java))
+            startActivity(Intent(this, edu.sswu.seatshare.SeatRegistration2Activity::class.java))
         }
     }
 }

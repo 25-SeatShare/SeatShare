@@ -1,4 +1,4 @@
-package com.example.seatshare
+package edu.sswu.seatshare
 
 import android.content.Intent
 import android.graphics.Color

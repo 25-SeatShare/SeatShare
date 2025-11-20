@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:392342481627:android:3c5cae0756c7b71505bafe",
         "android_client_info": {
-          "package_name": "com.example.seatshare"
+          "package_name": "edu.sswu.seatshare"
         }
       },
       "oauth_client": [],
