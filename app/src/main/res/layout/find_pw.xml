@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp">
-
         <!-- 뒤로가기 -->
         <TextView
             android:id="@+id/find_pw_back"
