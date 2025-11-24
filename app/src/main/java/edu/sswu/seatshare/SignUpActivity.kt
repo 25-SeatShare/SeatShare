@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Timestamp   // ✅ 추가
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -177,10 +178,26 @@ class SignUpActivity : AppCompatActivity() {
                 "createdAt" to System.currentTimeMillis()
             )
 
+            // 🔹 users/{uid} 문서 레퍼런스
+            val userDocRef = db.collection("users").document(user.uid)
+
             // 1차: Firestore에 저장
-            db.collection("users").document(user.uid)
+            userDocRef
                 .set(profile)
                 .addOnSuccessListener {
+                    // ✅ 회원가입 시 pointLogs에 초기 포인트 로그 남기기
+                    val logData = mapOf(
+                        "delta" to initialPoints,
+                        "type" to "signup",
+                        "message" to if (isTransportVulnerable)
+                            "회원가입 기본 포인트(교통약자)"
+                        else
+                            "회원가입 기본 포인트",
+                        "createdAt" to Timestamp.now()
+                    )
+
+                    userDocRef.collection("pointLogs").add(logData)
+
                     // 2차: Realtime Database에도 저장
                     val realtimeDb = FirebaseDatabase.getInstance()
                     val userRef = realtimeDb.getReference("users").child(user.uid)
@@ -225,7 +242,6 @@ class SignUpActivity : AppCompatActivity() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
-
 
     private fun toast(msg: String) =
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()

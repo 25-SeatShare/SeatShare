@@ -1,7 +1,8 @@
 package edu.sswu.seatshare
-//pointItem 클래스 정의
+
+import java.util.Date
+
 data class PointItem(
-    val date: String,
-    val time: String,
-    val type: String   // "+1 적립" 또는 "-1 차감"
+    val delta: Long = 0,      // +1, -1, +5, +20 등
+    val createdAt: Date = Date()
 )
