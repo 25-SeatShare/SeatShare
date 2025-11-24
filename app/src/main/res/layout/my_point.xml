@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 뒤로가기 -->
+    <TextView
+        android:id="@+id/my_point_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt; 뒤로가기"
+        android:textSize="18dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true" />
+
+    <!-- 상단: 내 누적 포인트 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#E7F1F9"
+        android:padding="10dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/my_point_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="내 누적 포인트"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+
+        <TextView
+            android:id="@+id/my_point_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0P"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#3A82C0"
+            android:paddingRight="9dp"/>
+    </LinearLayout>
+
+    <!-- RecyclerView (포인트 내역 목록) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pointRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="10dp" />
+
+</LinearLayout>
