@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/my_info1_profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:src="@drawable/profile" />
 
         </LinearLayout>
@@ -118,7 +118,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="회원 정보 >"
-                android:textSize="14dp"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -148,7 +148,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="포인트 확인 >"
-                android:textSize="14dp"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
 
 
@@ -179,7 +179,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="등급 확인 >"
-                android:textSize="14dp"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
 
 

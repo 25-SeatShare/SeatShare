@@ -37,5 +37,7 @@
         <activity android:name=".SeatRegistration5Activity" />
         <activity android:name=".FindPWActivity" />
         <activity android:name=".MyPointActivity" />
+        <activity android:name=".MyRankingActivity" />
+
     </application>
 </manifest>

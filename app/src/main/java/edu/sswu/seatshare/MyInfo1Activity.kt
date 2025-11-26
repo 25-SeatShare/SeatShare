@@ -51,12 +51,17 @@ class MyInfo1Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // (필요하면 나중에 포인트/등급 페이지도 연결)
+        // "포인트 확인 >" -> MyPointActivity로 이동
         pointCheckTv.setOnClickListener {
             val intent = Intent(this, MyPointActivity::class.java)
             startActivity(intent)
         }
-        // rankingCheckTv.setOnClickListener { ... }
+
+        // "랭킹 확인 >" -> MyRankingActivity로 이동
+        rankingCheckTv.setOnClickListener {
+            val intent = Intent(this, MyRankingActivity::class.java)
+            startActivity(intent)
+        }
 
         // 유저 정보 불러오기
         loadUserInfo()

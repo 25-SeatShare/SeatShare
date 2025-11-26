@@ -1,0 +1,383 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 뒤로가기 -->
+    <TextView
+        android:id="@+id/my_info1_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt; 뒤로가기"
+        android:textSize="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
+
+    <!-- 상단 : 내 등급 표시 -->
+        <LinearLayout
+            android:id="@+id/my_ranking_bg1"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:gravity="center"
+            android:background="#3A83BF"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="나의 등급은"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- 등급 -->
+                    <TextView
+                        android:id="@+id/my_ranking_title1_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:text="Bronze"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+
+                    <!-- 레벨 -->
+                    <TextView
+                        android:id="@+id/my_ranking_title1_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="Lv.4"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+
+            <View
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/circle"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/my_ranking_title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="B"
+                        android:textColor="#3A83BF"
+                        android:textSize="40dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- 레벨 업그레이드 안내문-->
+        <LinearLayout
+            android:id="@+id/my_rankging_bg2"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/design_my_ranking"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/my_ranking_upgrade1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="3P "
+                android:textStyle="bold"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=" 더 모으면 다음 단계로 승급 "
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/rank_line"/>
+
+            <!-- 레벨 표시 버튼-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="33dp"
+                android:paddingRight="25dp">
+
+                <!-- Lv1. -->
+                <ImageView
+                    android:id="@+id/my_ranking_Lv1"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="57dp"
+                    android:src="@drawable/station_circle_outline" />
+
+                <!-- Lv2. -->
+                <ImageView
+                    android:id="@+id/my_ranking_Lv2"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="57dp"
+                    android:src="@drawable/station_circle_outline" />
+
+                <!-- Lv3. -->
+                <ImageView
+                    android:id="@+id/my_ranking_Lv3"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="57dp"
+                    android:src="@drawable/station_circle_outline" />
+
+                <!-- Lv4. -->
+                <ImageView
+                    android:id="@+id/my_ranking_Lv4"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="57dp"
+                    android:src="@drawable/station_circle_outline" />
+
+                <!-- Lv5. -->
+                <ImageView
+                    android:id="@+id/my_ranking_Lv5"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/station_circle_outline" />
+
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="33dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Lv1."
+                android:layout_marginRight="50dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Lv2."
+                android:layout_marginRight="50dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Lv3."
+                android:layout_marginRight="50dp"
+                android:padding="3dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Lv4."
+                android:layout_marginRight="50dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Lv5."
+                android:layout_marginRight="33dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+    <!-- 등급 표시 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        <!-- Flatinum 등급 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp">
+
+            <View
+                android:id="@+id/my_ranking_flatinum"
+                android:layout_width="75dp"
+                android:layout_height="200dp"
+                android:background="#E9E9E9" />
+
+            <TextView
+                android:id="@+id/my_ranking_flatinum_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="80dp"
+                android:text="Flatinum"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Gold 등급 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp">
+
+            <View
+                android:id="@+id/my_ranking_Gold"
+                android:layout_width="75dp"
+                android:layout_marginTop="40dp"
+                android:layout_height="200dp"
+                android:background="#E9E9E9"/>
+
+            <TextView
+                android:id="@+id/my_ranking_Gold_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:textStyle="bold"/>
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Silver 등급 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp">
+
+            <View
+                android:id="@+id/my_ranking_Silver"
+                android:layout_width="75dp"
+                android:layout_marginTop="80dp"
+                android:layout_height="200dp"
+                android:background="#E9E9E9"/>
+
+            <TextView
+                android:id="@+id/my_ranking_Silver_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Silver"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:textStyle="bold"/>
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Bronze 등급 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp">
+
+            <View
+                android:id="@+id/my_ranking_Bronze"
+                android:layout_width="75dp"
+                android:layout_marginTop="120dp"
+                android:layout_height="200dp"
+                android:background="#E9E9E9"/>
+
+            <TextView
+                android:id="@+id/my_ranking_Bronze_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bronze"
+                android:layout_gravity="center"
+                android:layout_marginBottom="-35dp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
+
