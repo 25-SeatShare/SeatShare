@@ -78,8 +78,7 @@ class MyRankingActivity : AppCompatActivity() {
         tvSilver = findViewById(R.id.my_ranking_Silver_text)
         tvBronze = findViewById(R.id.my_ranking_Bronze_text)
 
-        // Todo 나중에 DB에서 포인트 값을 가져와서 대입
-        // 예) val points = doc.getLong("points")?.toInt() ?: 0
+        // Todo 나중에 DB에서 포인트 값을 가져오기
         val points = 26   // 테스트용 포인트
 
         applyRankingUI(points)
@@ -89,7 +88,7 @@ class MyRankingActivity : AppCompatActivity() {
     private fun applyRankingUI(points: Int) {
         val startPoint = 5          // Bronze Lv1 시작 포인트
         val stepPoint = 3           // 레벨 한 단계당 3P
-        val maxStep = 4 * 5 - 1     // Bronze~Flatinum Lv1~Lv5 총 20단계 → 0~19
+        val maxStep = 4 * 5 - 1     // Bronze~Flatinum Lv1~Lv5 총 20단계
 
         // 5P 미만이면 최소 Bronze Lv1
         val step = if (points < startPoint) 0

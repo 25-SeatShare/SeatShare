@@ -27,5 +27,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 포인트 버튼
+        val PointBtn = findViewById<Button>(R.id.btn_point)
+
+        PointBtn.setOnClickListener {
+            val intent = Intent(this, MyPointActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
