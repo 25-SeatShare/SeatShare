@@ -19,6 +19,9 @@ class MyRankingActivity : AppCompatActivity() {
     // “nP 더 모으면 다음 단계로 승급”
     private lateinit var tvUpgradePoint: TextView   // nP 부분만 바뀌는 TextView(id: my_ranking_upgrade1)
 
+    // 내 포인트 표시 텍스트뷰 (id: my_ranking_mypoint)
+    private lateinit var tvMyPoint: TextView
+
     // 레벨 동그라미
     private lateinit var lvCircles: Array<ImageView>
 
@@ -54,6 +57,9 @@ class MyRankingActivity : AppCompatActivity() {
         tvLevel = findViewById(R.id.my_ranking_title1_level)
         tvRankShort = findViewById(R.id.my_ranking_title2)
 
+        // 내 포인트 텍스트뷰
+        tvMyPoint = findViewById(R.id.my_ranking_mypoint)
+
         // 업그레이드 안내 텍스트
         tvUpgradePoint = findViewById(R.id.my_ranking_upgrade1)
 
@@ -78,8 +84,9 @@ class MyRankingActivity : AppCompatActivity() {
         tvSilver = findViewById(R.id.my_ranking_Silver_text)
         tvBronze = findViewById(R.id.my_ranking_Bronze_text)
 
-        // Todo 나중에 DB에서 포인트 값을 가져오기
-        val points = 26   // 테스트용 포인트
+        // 🔹 여기서 포인트만 직접 지정 (나중에 DB 값으로 교체)
+        val points = 26  // 예: 26P
+        tvMyPoint.text = "${points}P"   // 화면에 "26P" 표시
 
         applyRankingUI(points)
     }

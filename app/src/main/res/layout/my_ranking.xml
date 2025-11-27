@@ -126,24 +126,59 @@
             android:layout_height="70dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/design_my_ranking"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/my_ranking_upgrade1"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="3P "
-                android:textStyle="bold"/>
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재 포인트 "
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/my_ranking_mypoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nP"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=" 더 모으면 다음 단계로 승급 "
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/my_ranking_upgrade1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="3P "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#3A83BF"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=" 더 모으면 다음 단계로 승급 "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#3A83BF"/>
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -345,7 +380,7 @@
                 android:layout_height="wrap_content"
                 android:text="Silver"
                 android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="1dp"
                 android:textStyle="bold"/>
 
         </FrameLayout>
@@ -372,7 +407,7 @@
                 android:layout_height="wrap_content"
                 android:text="Bronze"
                 android:layout_gravity="center"
-                android:layout_marginBottom="-35dp"
+                android:layout_marginBottom="-40dp"
                 android:textStyle="bold" />
 
         </FrameLayout>
