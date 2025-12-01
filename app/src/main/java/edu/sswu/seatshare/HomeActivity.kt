@@ -35,5 +35,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 좌석 조회 버튼
+        val seatCheckBtn = findViewById<Button>(R.id.btn_seat_check)
+
+        seatCheckBtn.setOnClickListener {
+            val intent = Intent(this, SeatCheck1Activity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

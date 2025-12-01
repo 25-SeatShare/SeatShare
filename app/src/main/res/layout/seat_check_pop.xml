@@ -79,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+           >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,18 +111,25 @@
         </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+
 
     <Button
         android:id="@+id/seat_check_5_close_btn"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginTop="13dp"
         android:text="닫기"
         android:textSize="8dp"
         android:backgroundTint="#3A83BF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="1 포인트가 차감되었습니다"
+        android:paddingBottom="5dp"
+        android:textSize="10dp"/>
 
 
 </LinearLayout>

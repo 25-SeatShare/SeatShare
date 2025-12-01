@@ -66,9 +66,8 @@
             android:src="@drawable/arrive_pin2"
             android:layout_marginRight="10dp"/>
 
-        <!-- id 아직 안바꿈 -->
         <TextView
-            android:id="@+id/arrive_station_text1"
+            android:id="@+id/arrive_station_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="하차역"

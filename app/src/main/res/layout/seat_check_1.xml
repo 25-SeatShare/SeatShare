@@ -1,0 +1,225 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/seat_check_1_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt; 뒤로가기"
+        android:textSize="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:baselineAligned="true"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
+        android:paddingRight="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승차역 확인"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="탑승한 역을 입력해주세요"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:background="@drawable/design1"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/departure_pin2"
+            android:layout_marginRight="10dp"/>
+
+        <!-- id 아직 안바꿈 -->
+        <TextView
+            android:id="@+id/departure_station_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승차역"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7호선"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정"
+            android:textSize="18dp"
+            android:layout_marginLeft="150dp"
+            android:textColor="#606060"
+            android:clickable="true"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/time_list_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/time_list_background"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+
+        <!-- 열차 1 -->
+        <LinearLayout
+            android:id="@+id/time_item_1"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingTop="10dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:background="@drawable/time_list_select">
+
+            <TextView
+                android:id="@+id/time_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간1"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/destination_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="열차1"
+                android:textSize="17dp"
+                android:textColor="#555555"/>
+        </LinearLayout>
+
+        <!-- 열차 2 -->
+        <LinearLayout
+            android:id="@+id/time_item_2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:background="@drawable/time_list_select">
+
+            <TextView
+                android:id="@+id/time_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간2"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/destination_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="열차2"
+                android:textSize="17dp"
+                android:textColor="#555555"/>
+        </LinearLayout>
+
+        <!-- 열차 3 -->
+        <LinearLayout
+            android:id="@+id/time_item_3"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:background="@drawable/time_list_select">
+
+            <TextView
+                android:id="@+id/time_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간3"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/destination_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="열차3"
+                android:textSize="17dp"
+                android:textColor="#555555"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"/>
+
+    <Button
+        android:id="@+id/seat_check_1_next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다음으로"
+        android:backgroundTint="#3A83BF"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+</LinearLayout>
+
+
