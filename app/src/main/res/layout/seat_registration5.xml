@@ -43,7 +43,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:gravity="center"
-       android:layout_weight="20">
+       android:layout_weight="10">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,6 +216,7 @@
         android:backgroundTint="#3A83BF"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp"
         />
 
     <TextView
@@ -223,7 +224,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:text="+1 포인트가 적립되었습니다"
         android:textColor="#606060"
         android:textSize="15dp" />

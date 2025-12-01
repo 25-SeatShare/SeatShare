@@ -43,5 +43,21 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 좌석 정보 버튼
+        val seatinfoBtn = findViewById<Button>(R.id.btn_seat_info)
+
+        seatinfoBtn.setOnClickListener {
+            val intent = Intent(this, MySeatCheckActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 하차 인증 버튼
+        val getOffBtn = findViewById<Button>(R.id.btn_get_off)
+
+        getOffBtn.setOnClickListener {
+            val intent = Intent(this, GetOff1Activity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

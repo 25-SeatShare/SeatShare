@@ -45,6 +45,9 @@
         <activity android:name=".SeatCheck1Activity" />
         <activity android:name=".SeatCheck2Activity" />
         <activity android:name=".SeatCheck3Activity" />
+        <activity android:name=".MySeatCheckActivity" />
+        <activity android:name=".GetOff1Activity" />
+        <activity android:name=".GetOff2Activity" />
 
     </application>
 </manifest>

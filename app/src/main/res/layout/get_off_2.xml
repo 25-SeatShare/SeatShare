@@ -7,7 +7,7 @@
 
     <!-- 뒤로가기 -->
     <TextView
-        android:id="@+id/get_off_3_back_button"
+        android:id="@+id/get_off_2_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&lt; 뒤로가기"
@@ -212,7 +212,7 @@
 
     <!-- 처음으로 버튼 -->
     <Button
-        android:id="@+id/get_off_3_go_home_button"
+        android:id="@+id/get_off_2_go_home_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="처음으로"
