@@ -1,0 +1,107 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/get_off_1_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt; 뒤로가기"
+        android:textSize="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="462dp"
+        android:layout_weight="0.05"
+        android:baselineAligned="true"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
+        android:paddingRight="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="하차역 확인"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="하차한 역을 입력해주세요"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:background="@drawable/design1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrive_pin2"
+            android:layout_marginRight="10dp"/>
+
+        <!-- id 아직 안바꿈 -->
+        <TextView
+            android:id="@+id/arrive_station_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="하차역"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7호선"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="370dp"/>
+
+    <Button
+        android:id="@+id/get_off_1_confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="하차 인증하기"
+        android:backgroundTint="#3A83BF"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+</LinearLayout>
+
+

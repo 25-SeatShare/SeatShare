@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="3"
+        android:baselineAligned="true"
+        android:gravity="center"
+        android:paddingLeft="18dp"
+        android:paddingTop="100dp"
+        android:paddingRight="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 내 좌석은"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="60dp">
+
+                <TextView
+                    android:id="@+id/departure_station"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="승차역"
+                    android:textColor="#606060"
+                    android:textSize="18dp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/departure_station_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="승차역"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:paddingRight="110dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="60dp">
+
+                <TextView
+                    android:id="@+id/arrive_station"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="하차역"
+                    android:textColor="#606060"
+                    android:textSize="18dp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/arrive_station_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="하차역"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:paddingRight="110dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line2"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp">
+
+                <TextView
+                    android:id="@+id/platform_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="플랫폼 번호"
+                    android:textColor="#606060"
+                    android:textSize="18dp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/platform_number_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="번호"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:paddingRight="130dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="60dp"
+                >
+
+                <TextView
+                    android:id="@+id/seat_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="좌석번호"
+                    android:textColor="#606060"
+                    android:textSize="18dp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/seat_number_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="번호"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:paddingRight="130dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line2"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 처음으로 버튼 -->
+    <Button
+        android:id="@+id/my_seat_check_edit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수정 하기"
+        android:backgroundTint="#3A83BF"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="30dp"
+        />
+
+</LinearLayout>
