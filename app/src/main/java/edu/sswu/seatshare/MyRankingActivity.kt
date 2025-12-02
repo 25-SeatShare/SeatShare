@@ -165,11 +165,11 @@ class MyRankingActivity : AppCompatActivity() {
 
         // 1) 상단 배경 색
         val (mainColorHex, bg2ColorHex) = when (rank) {
-            "Flatinum" -> "#B8AB5F" to "#EFEACF"
+            "Flatinum" -> "#8BBDE5" to "#E7F1F9"
             "Gold"     -> "#E4D159" to "#FBF5CF"
             "Silver"   -> "#96A2A4" to "#E5EBEC"
             "Bronze"   -> "#B8AB5F" to "#EFEACF"
-            else       -> "#3A83BF" to "#EFEACF"
+            else       -> "#3A83BF" to "#E0E0E0"
         }
 
         val mainColor = Color.parseColor(mainColorHex)
@@ -180,10 +180,10 @@ class MyRankingActivity : AppCompatActivity() {
         myRankingCircleText.setTextColor(mainColor)
 
         // 2) 계단 블럭 중 내 등급만 강조 색 입히기
-        val colorFlatinum = Color.parseColor("#B8AB5F")  // 플래티넘 계열
+        val colorFlatinum = Color.parseColor("#8BBDE5")  // 플래티넘 계열
         val colorGold     = Color.parseColor("#E4D159")  // 골드
         val colorSilver   = Color.parseColor("#96A2A4")  // 실버
-        val colorBronze   = Color.parseColor("#B67A3A")  // 브론즈 톤 예시
+        val colorBronze   = Color.parseColor("#B8AB5F")  // 브론즈 톤 예시
 
         when (rank) {
             "Flatinum" -> {
@@ -215,7 +215,7 @@ class MyRankingActivity : AppCompatActivity() {
 
         // 활성 레벨 색
         val activeHex = when (rank) {
-            "Flatinum" -> "#B8AB5F"
+            "Flatinum" -> "#8BBDE5"
             "Gold"     -> "#E4D159"
             "Silver"   -> "#96A2A4"
             "Bronze"   -> "#B8AB5F"

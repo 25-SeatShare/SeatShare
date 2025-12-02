@@ -1,5 +1,6 @@
 package edu.sswu.seatshare
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -53,7 +54,7 @@ class SeatCheck3Activity : AppCompatActivity() {
         page3Img = findViewById(R.id.page_3_img)
         page4Img = findViewById(R.id.page_4_img)
 
-        // 기본 선택 색 적용 (0번 페이지)
+        // 기본 선택 색 적용(0번 페이지)
         updatePageColor(0)
 
         // 화살표 이동
@@ -79,10 +80,13 @@ class SeatCheck3Activity : AppCompatActivity() {
         findViewById<TextView>(R.id.seat_check_3_back_button).setOnClickListener {
             startActivity(Intent(this, SeatCheck2Activity::class.java))
         }
+
+        // ====== 좌석 버튼들에 클릭 리스너 연결 (팝업 띄우기) ======
+        initSeatClickListeners()
     }
 
+    // 페이지 인디케이터 색
     private fun updatePageColor(index: Int) {
-
         // 색 초기화
         page1Img.setColorFilter(null)
         page2Img.setColorFilter(null)
@@ -91,12 +95,98 @@ class SeatCheck3Activity : AppCompatActivity() {
 
         // 선택된 탭만 파란색
         val highlight = Color.parseColor("#9CC3E3")
-
         when (index) {
             0 -> page1Img.setColorFilter(highlight)
             1 -> page2Img.setColorFilter(highlight)
             2 -> page3Img.setColorFilter(highlight)
             3 -> page4Img.setColorFilter(highlight)
         }
+    }
+
+    // 좌석 버튼들에 공통 클릭 리스너 세팅
+    private fun initSeatClickListeners() {
+
+        fun setSeatClick(buttonId: Int) {
+            val btn = findViewById<Button>(buttonId)
+            btn.setOnClickListener {
+                val seatNumber = btn.text.toString()  // 버튼에 적힌 숫자 사용
+                showSeatPopup(seatNumber)
+            }
+        }
+
+        // ─── 1-1 페이지 좌석 ───
+        setSeatClick(R.id.seat_left_1_1_2)
+        setSeatClick(R.id.seat_left_2_1_2)
+        setSeatClick(R.id.seat_left_3_1_2)
+        setSeatClick(R.id.seat_right_4_1_2)
+        setSeatClick(R.id.seat_right_5_1_2)
+        setSeatClick(R.id.seat_right_6_1_2)
+
+        // ─── 1-2 페이지 좌석 ───
+        setSeatClick(R.id.seat_left_1_2_2)
+        setSeatClick(R.id.seat_left_2_2_2)
+        setSeatClick(R.id.seat_left_3_2_2)
+        setSeatClick(R.id.seat_left_4_2_2)
+        setSeatClick(R.id.seat_left_5_2_2)
+        setSeatClick(R.id.seat_left_6_2_2)
+        setSeatClick(R.id.seat_left_7_2_2)
+
+        setSeatClick(R.id.seat_right_8_2_2)
+        setSeatClick(R.id.seat_right_9_2_2)
+        setSeatClick(R.id.seat_right_10_2_2)
+        setSeatClick(R.id.seat_right_11_2_2)
+        setSeatClick(R.id.seat_right_12_2_2)
+        setSeatClick(R.id.seat_right_13_2_2)
+        setSeatClick(R.id.seat_right_14_2_2)
+
+        // ─── 1-3 페이지 좌석 ───
+        setSeatClick(R.id.seat_left_1_3_2)
+        setSeatClick(R.id.seat_left_2_3_2)
+        setSeatClick(R.id.seat_left_3_3_2)
+        setSeatClick(R.id.seat_left_4_3_2)
+        setSeatClick(R.id.seat_left_5_3_2)
+        setSeatClick(R.id.seat_left_6_3_2)
+        setSeatClick(R.id.seat_left_7_3_2)
+
+        setSeatClick(R.id.seat_right_8_3_2)
+        setSeatClick(R.id.seat_right_9_3_2)
+        setSeatClick(R.id.seat_right_10_3_2)
+        setSeatClick(R.id.seat_right_11_3_2)
+        setSeatClick(R.id.seat_right_12_3_2)
+        setSeatClick(R.id.seat_right_13_3_2)
+        setSeatClick(R.id.seat_right_14_3_2)
+
+        // ─── 1-4 페이지 좌석 ───
+        setSeatClick(R.id.seat_left_1_4_2)
+        setSeatClick(R.id.seat_left_2_4_2)
+        setSeatClick(R.id.seat_left_3_4_2)
+
+        setSeatClick(R.id.seat_right_4_4_2)
+        setSeatClick(R.id.seat_right_5_4_2)
+        setSeatClick(R.id.seat_right_6_4_2)
+    }
+
+    // 좌석 선택 팝업 띄우기
+    private fun showSeatPopup(seatNumber: String) {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.seat_check_pop)
+
+        // 좌석 번호 세팅 (n 부분)
+        val seatNumText = dialog.findViewById<TextView>(R.id.seat_check_5_seat_num)
+        seatNumText.text = seatNumber
+
+        // 필요하면 하차역 / 정거장 정보도 여기서 세팅 가능
+        // val arriveText = dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station)
+        // val cntText = dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station_cnt)
+        // arriveText.text = "홍대입구"
+        // cntText.text = "3"
+
+        // 닫기 버튼
+        val closeBtn = dialog.findViewById<Button>(R.id.seat_check_5_close_btn)
+        closeBtn.setOnClickListener {
+            dialog.dismiss()  // 팝업 닫고 다시 SeatCheck3Activity 화면 유지
+        }
+
+        dialog.show()
     }
 }
