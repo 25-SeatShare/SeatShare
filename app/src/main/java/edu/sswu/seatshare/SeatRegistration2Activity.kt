@@ -41,6 +41,9 @@ class SeatRegistration2Activity : AppCompatActivity() {
         "굴포천","부평구청"
     )
 
+    // 선택된 열차 정보 기억
+    private var selectedTrainKey: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.seat_registration2)
@@ -72,9 +75,16 @@ class SeatRegistration2Activity : AppCompatActivity() {
         loadRealtimeArrivals(departure, arrive)
 
         findViewById<TextView>(R.id.seat_registration2_select_button).setOnClickListener {
+
+            if (selectedTrainKey == null) {
+                Toast.makeText(this, "열차를 선택해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val intent = Intent(this, SeatRegistration3Activity::class.java)
             intent.putExtra("departure", departure)
             intent.putExtra("arrive", arrive)
+            intent.putExtra("trainKey", selectedTrainKey)
             startActivity(intent)
         }
 
@@ -83,7 +93,7 @@ class SeatRegistration2Activity : AppCompatActivity() {
         }
     }
 
-    // 방향 자동 판별 + API 호출
+    // 방향 판별 + API 호출 + 열차 정보 구하기
     private fun loadRealtimeArrivals(departure: String, arrive: String) {
         val apiKey = "50594f444b6b6179313037566a56764c"
 
@@ -95,13 +105,10 @@ class SeatRegistration2Activity : AppCompatActivity() {
         val urlString =
             "http://swopenapi.seoul.go.kr/api/subway/$apiKey/json/realtimeStationArrival/0/20/$encoded"
 
-        println("🚀 REQUEST URL = $urlString")
-
-        // 출발역/도착역 인덱스 추출
+        // 출발역/도착역 인덱스
         val depIndex = line7Stations.indexOf(depName)
         val arrIndex = line7Stations.indexOf(arrName)
 
-        // 방향 판별
         val isUpDirection = arrIndex < depIndex
         val targetDirection = if (isUpDirection) "상행" else "하행"
 
@@ -113,13 +120,10 @@ class SeatRegistration2Activity : AppCompatActivity() {
                     .build()
 
                 val responseStr = client.newCall(request).execute().body?.string() ?: ""
-
-                println("🔥 API RESPONSE = $responseStr")
-
                 val root = JSONObject(responseStr)
                 val list = root.optJSONArray("realtimeArrivalList")
 
-                val trains = mutableListOf<Triple<Int, String, String>>()
+                val trains = mutableListOf<Triple<Int, String, JSONObject>>()
 
                 if (list != null) {
                     for (i in 0 until list.length()) {
@@ -128,33 +132,68 @@ class SeatRegistration2Activity : AppCompatActivity() {
                         if (item.optString("subwayId") != "1007") continue
                         if (item.optString("updnLine") != targetDirection) continue
 
-                        // 도착 예정 (초)
                         val seconds = item.optString("barvlDt").toIntOrNull() ?: continue
                         val minutes = seconds / 60
+
                         val minText = if (minutes <= 0) "곧 도착" else "${minutes}분 후"
 
-                        val destText = item.optString("bstatnNm") + "행"
-
-                        trains.add(Triple(seconds, minText, destText))
+                        trains.add(Triple(seconds, minText, item))
                     }
                 }
 
-                // 도착 임박 순으로 정렬 후 상위 3개
                 val sorted = trains.sortedBy { it.first }.take(3)
 
-                val result = sorted.map { it.second to it.third }
+                // UI 표시 데이터 변환
+                val uiData = sorted.map {
+                    val json = it.third
+                    val dest = json.optString("bstatnNm") + "행"
+                    Pair(it.second, dest)
+                }
+
+                // 각 item 에 trainKey 저장
+                if (sorted.isNotEmpty()) {
+                    item1.setOnClickListener {
+                        val json = sorted[0].third
+                        selectedTrainKey = buildTrainKey(json)
+                        selectItem(item1)
+                    }
+                }
+                if (sorted.size >= 2) {
+                    item2.setOnClickListener {
+                        val json = sorted[1].third
+                        selectedTrainKey = buildTrainKey(json)
+                        selectItem(item2)
+                    }
+                }
+                if (sorted.size >= 3) {
+                    item3.setOnClickListener {
+                        val json = sorted[2].third
+                        selectedTrainKey = buildTrainKey(json)
+                        selectItem(item3)
+                    }
+                }
 
                 withContext(Dispatchers.Main) {
-                    applyResultToUI(result)
+                    applyResultToUI(uiData)
                 }
 
             } catch (e: Exception) {
-                println("❌ ERROR = ${e.localizedMessage}")
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@SeatRegistration2Activity, "요청 실패", Toast.LENGTH_LONG).show()
                 }
             }
         }
+    }
+
+    // 열차를 Firestore에서 구분할 수 있는 키 생성
+    private fun buildTrainKey(item: JSONObject): String {
+        val trainNo = item.optString("btrainNo")
+        val subwayId = item.optString("subwayId")
+        val upDown = item.optString("updnLine")
+        val start = item.optString("bstatnNm")
+        val time = item.optString("recptnDt")
+
+        return "${subwayId}_${upDown}_${start}_${trainNo}_$time"
     }
 
     private fun mapToApiStationName(name: String): String {
@@ -169,25 +208,16 @@ class SeatRegistration2Activity : AppCompatActivity() {
         item2.visibility = View.GONE
         item3.visibility = View.GONE
 
-        if (result.isEmpty()) {
-            item1.visibility = View.VISIBLE
-            time1.text = "도착 정보 없음"
-            dest1.text = ""
-            return
-        }
-
-        if (result.size >= 1) {
+        if (result.isNotEmpty()) {
             item1.visibility = View.VISIBLE
             time1.text = result[0].first
             dest1.text = result[0].second
         }
-
         if (result.size >= 2) {
             item2.visibility = View.VISIBLE
             time2.text = result[1].first
             dest2.text = result[1].second
         }
-
         if (result.size >= 3) {
             item3.visibility = View.VISIBLE
             time3.text = result[2].first
