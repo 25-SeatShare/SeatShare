@@ -17,6 +17,9 @@ class SeatCheck2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.seat_check_2)
 
+        // SeatCheck1에서 가져오는 trainKey
+        val trainKey = intent.getStringExtra("trainKey") ?: ""
+
         val platforms = listOf<ImageView>(
             findViewById(R.id.platform1_2),
             findViewById(R.id.platform2_2),
@@ -28,7 +31,7 @@ class SeatCheck2Activity : AppCompatActivity() {
             findViewById(R.id.platform8_2)
         )
 
-        // 기본 투명도 30%
+        // 기본 투명도 설정
         platforms.forEach { it.alpha = 0.3f }
 
         val platformNumbers = listOf<TextView>(
@@ -42,10 +45,9 @@ class SeatCheck2Activity : AppCompatActivity() {
             findViewById(R.id.platform8_text_2)
         )
 
-        // 클릭하면 색 변경 + 번호 저장
+        // 선택 UI
         platforms.forEachIndexed { index, img ->
             img.setOnClickListener {
-
                 selectedPlatform?.alpha = 0.3f
                 img.alpha = 1.0f
                 selectedPlatform = img
@@ -54,7 +56,7 @@ class SeatCheck2Activity : AppCompatActivity() {
             }
         }
 
-        // 다음 버튼 → SeatCheck3으로
+        // 다음 버튼
         findViewById<Button>(R.id.seat_check_2_next_button).setOnClickListener {
 
             if (selectedCarNumber == null) {
@@ -63,6 +65,7 @@ class SeatCheck2Activity : AppCompatActivity() {
             }
 
             val intent = Intent(this, SeatCheck3Activity::class.java)
+            intent.putExtra("trainKey", trainKey)
             intent.putExtra("selected_platform", selectedCarNumber!!.toInt())
             startActivity(intent)
         }
