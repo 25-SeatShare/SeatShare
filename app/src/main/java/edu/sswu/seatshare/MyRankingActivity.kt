@@ -27,11 +27,11 @@ class MyRankingActivity : AppCompatActivity() {
     // Lv1~Lv5 동그라미
     private lateinit var lvCircles: List<ImageView>
 
-    // 배경
+    // 상단 배경들
     private lateinit var myRankingBg1: View
     private lateinit var myRankingBg2: View
 
-    // 등급 아이콘(배경 View)
+    // 등급 블럭(계단 모양 View)
     private lateinit var iconFlatinum: View
     private lateinit var iconGold: View
     private lateinit var iconSilver: View
@@ -42,7 +42,6 @@ class MyRankingActivity : AppCompatActivity() {
     private lateinit var textGold: TextView
     private lateinit var textSilver: TextView
     private lateinit var textBronze: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +69,7 @@ class MyRankingActivity : AppCompatActivity() {
         myRankingBg1 = findViewById(R.id.my_ranking_bg1)
         myRankingBg2 = findViewById(R.id.my_ranking_bg2)
 
-        // 등급 아이콘
+        // 등급 블럭(계단)
         iconFlatinum = findViewById(R.id.my_ranking_flatinum)
         iconGold = findViewById(R.id.my_ranking_Gold)
         iconSilver = findViewById(R.id.my_ranking_Silver)
@@ -87,10 +86,11 @@ class MyRankingActivity : AppCompatActivity() {
             finish()
         }
 
+        // 포인트 불러오기 + UI 반영
         loadMyPointFromFirestore()
     }
 
-
+    // Firestore에서 포인트 불러오기
     private fun loadMyPointFromFirestore() {
         val uid = auth.currentUser?.uid ?: return
 
@@ -105,38 +105,65 @@ class MyRankingActivity : AppCompatActivity() {
             }
     }
 
-
+    // 포인트 기준으로 등급/레벨/포인트 안내 적용
     private fun applyRankUI(point: Int) {
         val info = getRankInfo(point)
 
+        // 상단 등급 / 레벨 텍스트
         myRankingTitleRank.text = info.rank
         myRankingTitleLevel.text = "Lv.${info.level}"
 
+        // 원 안에 들어가는 글자 (B / S / G / F)
         myRankingCircleText.text = when (info.rank) {
-            "Bronze" -> "B"
-            "Silver" -> "S"
-            "Gold" -> "G"
+            "Bronze"   -> "B"
+            "Silver"   -> "S"
+            "Gold"     -> "G"
             "Flatinum" -> "F"
-            else -> "B"
+            else       -> "B"
         }
 
+        // 현재 포인트
         myPointText.text = "${point}P"
 
+        // 다음 단계까지 남은 포인트
         if (info.needMorePoint != null && info.needMorePoint > 0) {
             myRankingUpgradePoint.text = "${info.needMorePoint}P "
         } else {
             myRankingUpgradePoint.text = "최고 등급입니다!"
         }
 
+        // 테마(색상) 적용
         applyRankTheme(info.rank)
+
+        // 레벨 동그라미 표시
         updateLevelCircles(info.level, info.rank)
     }
 
+    // ---------- 계단 블럭 초기화 / 테마 적용 ----------
 
-    /** 등급별 배경/아이콘/텍스트 적용 */
+    // 계단 형태 등급 블럭 초기화 (기본 회색 + 검정 글씨)
+    private fun resetRankBlocks() {
+        val defaultBlockColor = Color.parseColor("#E9E9E9")
+        val defaultTextColor = Color.parseColor("#000000")
+
+        iconFlatinum.setBackgroundColor(defaultBlockColor)
+        iconGold.setBackgroundColor(defaultBlockColor)
+        iconSilver.setBackgroundColor(defaultBlockColor)
+        iconBronze.setBackgroundColor(defaultBlockColor)
+
+        textFlatinum.setTextColor(defaultTextColor)
+        textGold.setTextColor(defaultTextColor)
+        textSilver.setTextColor(defaultTextColor)
+        textBronze.setTextColor(defaultTextColor)
+    }
+
+    /** 등급별 상단 배경 + 아래 계단 블럭 색 적용 */
     private fun applyRankTheme(rank: String) {
 
-        // 배경 색상
+        // 0) 먼저 계단 블럭 전부 기본으로 리셋
+        resetRankBlocks()
+
+        // 1) 상단 배경 색
         val (mainColorHex, bg2ColorHex) = when (rank) {
             "Flatinum" -> "#B8AB5F" to "#EFEACF"
             "Gold"     -> "#E4D159" to "#FBF5CF"
@@ -150,17 +177,13 @@ class MyRankingActivity : AppCompatActivity() {
 
         myRankingBg1.setBackgroundColor(mainColor)
         myRankingBg2.setBackgroundColor(bg2Color)
-
-        // 동그라미 안 글자 색
         myRankingCircleText.setTextColor(mainColor)
 
-        // 등급 아이콘 색상
-        val colorFlatinum = Color.parseColor("#EFEACF")
-        val colorGold = Color.parseColor("#E4D159")
-        val colorSilver = Color.parseColor("#96A2A4")
-        val colorBronze = Color.parseColor("#B8AB5F")
-
-        // 이전 스타일 유지 → 아무 것도 건드리지 않음
+        // 2) 계단 블럭 중 내 등급만 강조 색 입히기
+        val colorFlatinum = Color.parseColor("#B8AB5F")  // 플래티넘 계열
+        val colorGold     = Color.parseColor("#E4D159")  // 골드
+        val colorSilver   = Color.parseColor("#96A2A4")  // 실버
+        val colorBronze   = Color.parseColor("#B67A3A")  // 브론즈 톤 예시
 
         when (rank) {
             "Flatinum" -> {
@@ -182,10 +205,11 @@ class MyRankingActivity : AppCompatActivity() {
         }
     }
 
+    // ---------- 레벨 동그라미 표시 ----------
 
     /**
-     * 현재 레벨 이하만 등급색 적용
-     * 나머지는 XML 기본색 그대로 (색 변경하지 않음)
+     * 현재 레벨에 해당하는 동그라미 하나만 색칠
+     * 나머지는 비활성 회색
      */
     private fun updateLevelCircles(currentLevel: Int, rank: String) {
 
@@ -199,19 +223,31 @@ class MyRankingActivity : AppCompatActivity() {
         }
         val activeColor = Color.parseColor(activeHex)
 
+        // 비활성(기본) 색
+        val inactiveColor = Color.parseColor("#E0E0E0")
+
         lvCircles.forEachIndexed { index, imageView ->
-            if (index < currentLevel) {
+            if (index == currentLevel - 1) {
+                // 내 레벨 동그라미만 컬러
                 imageView.imageTintList = ColorStateList.valueOf(activeColor)
+            } else {
+                // 나머지는 회색
+                imageView.imageTintList = ColorStateList.valueOf(inactiveColor)
             }
-            // else → XML 기본색 유지, 건드리지 않음
         }
     }
 
+    // ---------- 등급 표 / 계산 ----------
 
-    // ====== 등급 표 ======
     data class RankCell(val minPoint: Int, val rank: String, val level: Int)
-    data class RankInfo(val rank: String, val level: Int, val needMorePoint: Int?, val nextCell: RankCell?)
+    data class RankInfo(
+        val rank: String,
+        val level: Int,
+        val needMorePoint: Int?,   // 다음 칸까지 남은 포인트
+        val nextCell: RankCell?    // 다음 단계 셀 (없으면 최고 등급)
+    )
 
+    // 포인트 → 등급/레벨 기준표
     private val rankTable = listOf(
         RankCell(5,  "Bronze", 1),
         RankCell(8,  "Bronze", 2),
@@ -238,13 +274,15 @@ class MyRankingActivity : AppCompatActivity() {
         RankCell(62, "Flatinum", 5)
     )
 
+    // 포인트로부터 현재 등급/레벨 + 다음 단계까지 남은 포인트 계산
     private fun getRankInfo(point: Int): RankInfo {
         var current = rankTable.first()
         var next: RankCell? = null
 
         for (cell in rankTable) {
-            if (point >= cell.minPoint) current = cell
-            else {
+            if (point >= cell.minPoint) {
+                current = cell
+            } else {
                 next = cell
                 break
             }
