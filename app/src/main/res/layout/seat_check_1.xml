@@ -203,6 +203,38 @@
                 android:textSize="17dp"
                 android:textColor="#555555"/>
         </LinearLayout>
+
+        <!-- 열차 4 -->
+        <LinearLayout
+            android:id="@+id/time_item_4"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:background="@drawable/time_list_select">
+
+            <TextView
+                android:id="@+id/time_text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간4"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/destination_text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="열차4"
+                android:textSize="17dp"
+                android:textColor="#555555"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
