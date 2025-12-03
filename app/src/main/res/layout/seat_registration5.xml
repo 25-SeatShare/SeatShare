@@ -216,17 +216,8 @@
         android:backgroundTint="#3A83BF"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="35dp"
         />
 
-    <TextView
-        android:id="@+id/plus_point_notice_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
-        android:text="+1 포인트가 적립되었습니다"
-        android:textColor="#606060"
-        android:textSize="15dp" />
 
 </LinearLayout>

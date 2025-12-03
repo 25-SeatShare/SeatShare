@@ -840,7 +840,7 @@
         android:layout_height="wrap_content"
         android:text="다음으로"
         android:backgroundTint="#3A83BF"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
