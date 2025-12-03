@@ -54,17 +54,19 @@
         android:layout_height= "wrap_content"
         android:background="@drawable/design1"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="40dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:src="@drawable/departure_pin2"
-            android:layout_marginRight="10dp"/>
+            android:adjustViewBounds="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"/>
 
         <!-- id 아직 안바꿈 -->
         <TextView
@@ -72,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="승차역"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -80,16 +82,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7호선"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
+
+        <View
+            android:layout_width="156dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:text="수정"
             android:textSize="18dp"
-            android:layout_marginLeft="150dp"
             android:textColor="#606060"
             android:clickable="true"
             />
@@ -104,10 +111,9 @@
         android:orientation="vertical"
         android:background="@drawable/time_list_background"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="40dp"
+
         >
 
         <!-- 열차 1 -->
@@ -116,8 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
-            android:paddingLeft="12dp"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:background="@drawable/time_list_select">
@@ -147,8 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
-            android:paddingLeft="12dp"
-            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:background="@drawable/time_list_select">
@@ -178,9 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
-            android:paddingLeft="12dp"
-            android:paddingBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:background="@drawable/time_list_select">
@@ -210,8 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
-            android:paddingLeft="12dp"
-            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:background="@drawable/time_list_select">
@@ -239,7 +240,8 @@
 
     <View
         android:layout_width="wrap_content"
-        android:layout_height="150dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/seat_check_1_next_button"

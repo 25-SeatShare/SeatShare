@@ -61,8 +61,8 @@
         android:layout_height= "wrap_content"
         android:background="@drawable/design1"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="40dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
@@ -70,16 +70,18 @@
         <ImageView
             android:id="@+id/departure_pin2_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:src="@drawable/departure_pin2"
-            android:layout_marginRight="10dp"/>
+            android:adjustViewBounds="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"/>
 
         <TextView
             android:id="@+id/departure_station_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="출발역"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -88,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7호선"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -100,8 +102,8 @@
         android:layout_height= "wrap_content"
         android:background="@drawable/design1"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="40dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
@@ -109,16 +111,18 @@
         <ImageView
             android:id="@+id/arrive_pin2_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:src="@drawable/arrive_pin2"
-            android:layout_marginRight="10dp"/>
+            android:adjustViewBounds="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"/>
 
         <TextView
             android:id="@+id/arrive_station_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="하차역"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -127,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7호선"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
@@ -135,55 +139,52 @@
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height= "wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:baselineAligned="true">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/subway_line_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/subway_line"
+            android:layout_width="30dp"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            />
+            android:src="@drawable/subway_line" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height= "wrap_content"
-            android:paddingLeft="15dp"
-            android:baselineAligned="true">
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height= "wrap_content"
-                android:layout_marginTop="43dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:baselineAligned="true"
-                android:layout_weight="1">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/line_number7_text3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="7호선"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
                     android:textColor="#7A7F50"
-                    android:layout_marginRight="10dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/departure_station_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:text="출발역"
-                    android:textSize="18dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/departure_station_text3"
@@ -192,48 +193,47 @@
                     android:text="승차"
                     android:textSize="18dp" />
 
-                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/time_list_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/time_list_background"
-                android:layout_weight="1"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                >
+                android:background="@drawable/time_list_background"
+                android:gravity="center"
+                android:minHeight="135dp"
+                android:orientation="vertical">
 
                 <!-- 열차 1 -->
                 <LinearLayout
                     android:id="@+id/time_item_1"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="10dp"
-                    android:gravity="center_vertical"
+                    android:background="@drawable/time_list_select"
                     android:clickable="true"
-                    android:background="@drawable/time_list_select">
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
                         android:id="@+id/time_text_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:text="시간1"
                         android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/destination_text_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차1"
-                        android:textSize="17dp"
-                        android:textColor="#555555"/>
+                        android:textColor="#555555"
+                        android:textSize="17dp" />
                 </LinearLayout>
 
                 <!-- 열차 2 -->
@@ -241,30 +241,29 @@
                     android:id="@+id/time_item_2"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="12dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
+                    android:background="@drawable/time_list_select"
                     android:clickable="true"
-                    android:background="@drawable/time_list_select">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
                         android:id="@+id/time_text_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:text="시간2"
                         android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/destination_text_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차2"
-                        android:textSize="17dp"
-                        android:textColor="#555555"/>
+                        android:textColor="#555555"
+                        android:textSize="17dp" />
                 </LinearLayout>
 
                 <!-- 열차 3 -->
@@ -272,60 +271,57 @@
                     android:id="@+id/time_item_3"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="12dp"
-                    android:paddingBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
+                    android:background="@drawable/time_list_select"
                     android:clickable="true"
-                    android:background="@drawable/time_list_select">
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
                         android:id="@+id/time_text_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:text="시간3"
                         android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/destination_text_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="열차3"
-                        android:textSize="17dp"
-                        android:textColor="#555555"/>
+                        android:textColor="#555555"
+                        android:textSize="17dp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height= "wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
                 android:baselineAligned="true"
-                android:layout_weight="1">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/line_number7_text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="7호선"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
                     android:textColor="#7A7F50"
-                    android:layout_marginRight="10dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/arrive_station_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:text="하차역"
-                    android:textSize="18dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/arrive_station_text3"
@@ -339,10 +335,7 @@
         </LinearLayout>
 
 
-
-
     </LinearLayout>
-
 
     <Button
         android:id="@+id/seat_registration2_select_button"

@@ -145,6 +145,7 @@ class SeatCheck1Activity : AppCompatActivity() {
         timeItem1.setOnClickListener { selectTrain(it) }
         timeItem2.setOnClickListener { selectTrain(it) }
         timeItem3.setOnClickListener { selectTrain(it) }
+        timeItem4.setOnClickListener { selectTrain(it) }
 
         findViewById<TextView>(R.id.seat_check_1_next_button).setOnClickListener {
             if (selectedTrainKey == null) {
@@ -336,6 +337,7 @@ class SeatCheck1Activity : AppCompatActivity() {
         timeItem1.isSelected = false
         timeItem2.isSelected = false
         timeItem3.isSelected = false
+        timeItem4.isSelected = false
         view.isSelected = true
 
         selectedTrainKey = view.tag as? String
