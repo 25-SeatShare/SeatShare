@@ -3,6 +3,7 @@ package edu.sswu.seatshare
 import java.util.Date
 
 data class PointItem(
-    val delta: Long = 0,      // +1, -1, +5, +20 등
+    val delta: Long = 0,
+    val message: String = "",
     val createdAt: Date = Date()
 )

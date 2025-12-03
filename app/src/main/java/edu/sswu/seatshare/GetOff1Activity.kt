@@ -11,8 +11,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 import kotlin.math.*
 
 class GetOff1Activity : AppCompatActivity() {
@@ -24,6 +26,9 @@ class GetOff1Activity : AppCompatActivity() {
     private val LOCATION_PERMISSION_CODE = 5000
 
     private lateinit var currentStationText: TextView
+
+    // ✅ 버튼으로 하차 인증을 눌렀는지 구분하기 위한 플래그
+    private var triggeredByButton: Boolean = false
 
     data class Station(val name: String, val lat: Double, val lon: Double)
 
@@ -97,12 +102,13 @@ class GetOff1Activity : AppCompatActivity() {
             finish()
         }
 
-        // 하차 인증하기
+        // 하차 인증하기 버튼
         findViewById<TextView>(R.id.get_off_1_confirm_button).setOnClickListener {
+            triggeredByButton = true   // ✅ 버튼에서 실행되었음을 표시
             checkLocationPermission()
         }
 
-        // 첫 로딩 시 현재 위치 자동 감지
+        // 첫 로딩 시 현재 위치 자동 감지 (포인트 적립 X, 그냥 현재역만 표시용)
         checkLocationPermission()
     }
 
@@ -121,7 +127,7 @@ class GetOff1Activity : AppCompatActivity() {
             )
         } else {
             autodetectCurrentStation()   // 현재역 표시
-            verifyGetOff()              // 하차 인증 시도
+            verifyGetOff()              // 하차 인증 시도 (버튼으로 온 경우에만 포인트 적립)
         }
     }
 
@@ -204,6 +210,13 @@ class GetOff1Activity : AppCompatActivity() {
                     val nearest = findNearestStation(loc.latitude, loc.longitude)
 
                     if (nearest.name == toStation) {
+
+                        // ✅ 하차 인증 성공 & 버튼 눌러서 온 경우에만 포인트 적립
+                        if (triggeredByButton) {
+                            givePointForGetOff(uid)
+                            triggeredByButton = false
+                        }
+
                         // 성공 → 2페이지로 이동
                         val intent = Intent(this, GetOff2Activity::class.java)
                         intent.putExtra("departure", fromStation)
@@ -218,6 +231,26 @@ class GetOff1Activity : AppCompatActivity() {
                     }
                 }
             }
+    }
+
+    // ✅ 하차 인증 성공 시 포인트 적립 + 로그 기록
+    private fun givePointForGetOff(uid: String) {
+        val userRef = db.collection("users").document(uid)
+
+        // points 증가
+        userRef.update("points", FieldValue.increment(1))
+
+        // 로그 남기기
+        userRef.collection("pointLogs").document().set(
+            mapOf(
+                "delta" to 1,
+                "message" to "+1 적립 (하차 인증)",
+                "createdAt" to Timestamp.now()
+            )
+        )
+
+        // 사용자에게 안내
+        toast("하차 인증 완료! 포인트 +1 적립되었습니다.")
     }
 
     private fun toast(msg: String) =
