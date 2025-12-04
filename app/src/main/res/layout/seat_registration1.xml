@@ -65,7 +65,8 @@
     <!-- 7호선 라인1 (아이콘 줄) -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <!-- 갈색 7호선 선 -->
         <ImageView
@@ -132,7 +133,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingLeft="33dp"
+        android:paddingLeft="34dp"
         android:paddingRight="25dp">
 
         <TextView
@@ -141,7 +142,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="이수"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="34dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -150,7 +151,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="내방"
-            android:layout_marginRight="36dp"
+            android:layout_marginRight="32dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -158,9 +159,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:text="고속\n터미널"
-            android:layout_marginRight="20dp"
-            android:padding="3dp"
+            android:text="  고속\n터미널"
+            android:layout_marginRight="29dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="반포"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="35dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:text="논현"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="35dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -193,18 +193,19 @@
     <!-- 7호선 아이콘 -->
     <ImageView
         android:id="@+id/line7_icon1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="150dp"
         android:src="@drawable/line7_icon"
-        android:paddingBottom="70dp"
-        android:paddingTop="60dp"/>
-
-
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        />
 
     <!-- 7호선 라인2 (아이콘 줄) -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
         <!-- 갈색 7호선 선 -->
         <ImageView
@@ -272,8 +273,8 @@
         android:layout_height="56dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="33dp"
-        android:paddingRight="25dp">
+        android:paddingLeft="35dp"
+        android:paddingRight="20dp">
 
         <TextView
             android:id="@+id/gunja_text"
@@ -297,7 +298,7 @@
             android:id="@+id/childrensgrandpark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="31dp"
+            android:layout_marginRight="28dp"
             android:text="어린이\n대공원"
             android:textSize="15dp"
             android:textStyle="bold"/>
@@ -306,7 +307,7 @@
             android:id="@+id/konkukuniv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="35dp"
             android:text="건대\n입구"
             android:textSize="15dp"
             android:textStyle="bold"/>
@@ -315,7 +316,7 @@
             android:id="@+id/cheongdam_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="38dp"
+            android:layout_marginRight="37dp"
             android:text="청담"
             android:textSize="15dp"
             android:textStyle="bold"/>

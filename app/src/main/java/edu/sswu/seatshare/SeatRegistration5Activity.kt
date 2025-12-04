@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SeatRegistration5Activity : AppCompatActivity() {
@@ -40,9 +39,12 @@ class SeatRegistration5Activity : AppCompatActivity() {
         findViewById<TextView>(R.id.platform_number_).text = seatPage
         findViewById<TextView>(R.id.seat_number_).text = seatNum
 
-        saveSeatAndAddPoint(trainKey, departure, arrive, seatPage, seatNum)
+        // 좌석 정보만 저장 (포인트 적립 X)
+        saveSeat(trainKey, departure, arrive, seatPage, seatNum)
 
         findViewById<TextView>(R.id.seat_registration5_go_home_button).setOnClickListener {
+            // 처음으로 눌렀을 때 안내 문구
+            toast("하차 인증 시 포인트 +1 적립됩니다")
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
@@ -53,7 +55,7 @@ class SeatRegistration5Activity : AppCompatActivity() {
         }
     }
 
-    private fun saveSeatAndAddPoint(
+    private fun saveSeat(
         trainKey: String,
         departure: String,
         arrive: String,
@@ -83,8 +85,10 @@ class SeatRegistration5Activity : AppCompatActivity() {
                 throw IllegalStateException("이미 선택된 좌석입니다.")
             }
 
+            // 좌석 정보 저장
             tx.set(seatRef, seatData)
 
+            // 유저의 현재 좌석 정보만 기록 (포인트 X)
             tx.set(
                 userRef.collection("seats").document("current"),
                 mapOf(
@@ -96,19 +100,8 @@ class SeatRegistration5Activity : AppCompatActivity() {
                     "updatedAt" to Timestamp.now()
                 )
             )
-
-            tx.update(userRef, "points", FieldValue.increment(1))
-
-            tx.set(
-                userRef.collection("pointLogs").document(),
-                mapOf(
-                    "delta" to 1,
-                    "message" to "+1 적립 (좌석 등록)",
-                    "createdAt" to Timestamp.now()
-                )
-            )
         }.addOnSuccessListener {
-            toast("좌석 등록 완료! +1 포인트")
+            toast("좌석 등록 완료!")
         }.addOnFailureListener {
             toast(it.message ?: "좌석 등록 실패")
         }

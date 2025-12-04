@@ -9,8 +9,11 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewFlipper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 
 class SeatCheck3Activity : AppCompatActivity() {
 
@@ -30,10 +33,13 @@ class SeatCheck3Activity : AppCompatActivity() {
     private var platformNumber: Int = -1
 
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var auth: FirebaseAuth   // ✅ 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.seat_check_3)
+
+        auth = FirebaseAuth.getInstance()     // ✅ 초기화
 
         trainKey = intent.getStringExtra("trainKey") ?: ""
         platformNumber = intent.getIntExtra("selected_platform", -1)
@@ -122,8 +128,12 @@ class SeatCheck3Activity : AppCompatActivity() {
                     .addOnSuccessListener {
 
                         if (it.exists()) {
-                            // 이미 점유됨 → 빨간색 + 팝업 표시
+                            // 이미 점유됨 → 빨간색 + 팝업 표시 + 포인트 -1
                             btn.setBackgroundColor(Color.parseColor("#ff8787"))
+
+                            // ✅ 점유 좌석 정보 확인 시 포인트 -1
+                            deductPointForCheckingOccupiedSeat()
+
                             showSeatPopup(
                                 seatNumber,
                                 occupied = true,
@@ -165,6 +175,22 @@ class SeatCheck3Activity : AppCompatActivity() {
         ids.forEach { attach(it) }
     }
 
+    // ✅ 점유 좌석을 조회했을 때 포인트 -1 & 로그 기록
+    private fun deductPointForCheckingOccupiedSeat() {
+        val uid = auth.currentUser?.uid ?: return
+
+        val userRef = db.collection("users").document(uid)
+
+        // points -1
+        userRef.update("points", FieldValue.increment(-1))
+
+        // 로그 남기기 (PointItem 사용)
+        val log = PointItem(delta = -1)
+        userRef.collection("pointLogs").document().set(log)
+
+        // 안내 (원하면 삭제 가능)
+        toast("점유 좌석 확인으로 포인트 1점 차감되었습니다.")
+    }
 
     // 좌석 팝업 표시
     private fun showSeatPopup(
@@ -197,4 +223,7 @@ class SeatCheck3Activity : AppCompatActivity() {
 
         dialog.show()
     }
+
+    private fun toast(msg: String) =
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
