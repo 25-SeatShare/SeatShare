@@ -49,6 +49,7 @@
         <activity android:name=".MySeatCheckActivity" />
         <activity android:name=".GetOff1Activity" />
         <activity android:name=".GetOff2Activity" />
+        <activity android:name=".DeleteAccountActivity" />
 
     </application>
 </manifest>
