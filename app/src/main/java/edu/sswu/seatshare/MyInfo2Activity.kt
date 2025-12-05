@@ -65,6 +65,11 @@ class MyInfo2Activity : AppCompatActivity() {
 
         // 뒤로가기
         backTv.setOnClickListener { finish() }
+
+        //회원 탈퇴
+        findViewById<TextView>(R.id.tv_delete_account).setOnClickListener {
+            startActivity(Intent(this,DeleteAccountActivity::class.java))
+        }
     }
 
     // 🔹 Firestore에서 유저 정보 읽어오기

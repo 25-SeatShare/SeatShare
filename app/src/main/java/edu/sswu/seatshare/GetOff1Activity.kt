@@ -90,11 +90,20 @@ class GetOff1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.get_off_1)
 
+        val intent = MyIntentHolder.getOffIntent
+        val departure = intent?.getStringExtra("departure") ?: ""
+        val arrive = intent?.getStringExtra("arrive") ?: ""
+
+        findViewById<TextView>(R.id.departure_station_text1_2).text = departure
+        findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
+
+
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        currentStationText = findViewById(R.id.arrive_station_text)
+        currentStationText = findViewById(R.id.current_station_text)
 
         // 뒤로가기
         findViewById<TextView>(R.id.get_off_1_back_button).setOnClickListener {

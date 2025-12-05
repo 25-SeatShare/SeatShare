@@ -201,11 +201,22 @@ class SeatRegistration1Activity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 2페이지로 전달
+            // SeatRegistration2로 이동하는 기존 코드
             val intent = Intent(this, SeatRegistration2Activity::class.java)
             intent.putExtra("departure", departure)
             intent.putExtra("arrive", arrive)
             startActivity(intent)
+
+            // ★ GetOff1으로 "값만" 전달해두는 Intent (화면 전환 없음)
+            val getOffIntent = Intent(this, GetOff1Activity::class.java)
+            getOffIntent.putExtra("departure", departure)
+            getOffIntent.putExtra("arrive", arrive)
+
+           // 인텐트를 전역에 보관하는 예시 (앱 어디서든 꺼내 쓸 수 있음)
+            MyIntentHolder.getOffIntent = getOffIntent
+
+
+
 
         }
 
