@@ -63,8 +63,13 @@ class MyInfo2Activity : AppCompatActivity() {
             finish()
         }
 
-        // 뒤로가기
-        backTv.setOnClickListener { finish() }
+        // 뒤로가기 → 무조건 MyInfo1Activity로 이동
+        backTv.setOnClickListener {
+            val intent = Intent(this, MyInfo1Activity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+        }
 
         //회원 탈퇴
         findViewById<TextView>(R.id.tv_delete_account).setOnClickListener {

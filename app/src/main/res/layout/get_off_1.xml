@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="하차한 역을 입력해주세요"
+            android:text="하차한 역을 확인해주세요"
             android:textSize="15dp" />
 
     </LinearLayout>
@@ -72,9 +72,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="출발역"
+            android:text="승차역"
             android:textSize="17dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="7dp"
+            android:textColor="#A7A3A3"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/departure_station_text1_2"
@@ -121,7 +123,9 @@
             android:layout_height="wrap_content"
             android:text="하차역"
             android:textSize="17dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="7dp"
+            android:textColor="#A7A3A3"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/arrive_station_text1_2"
@@ -155,13 +159,23 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/gray_pin"
+            android:adjustViewBounds="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:text="현재역"
             android:textSize="17dp"
-            android:layout_marginRight="10dp"
-/>
+            android:layout_marginRight="7dp"
+            android:textColor="#A7A3A3"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/current_station_text"
