@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="280dp"
+    android:layout_height="300dp"
+    android:background="@drawable/design_notice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="승하차역 선택"
+            android:textStyle="bold"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_gravity="center"
+        android:layout_marginBottom="35dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/departure_img"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="버튼을 한 번 클릭하여 \n승차역으로 설정해주세요"
+            android:textSize="13dp"
+            android:textColor="#118232"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrive_img"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="버튼을 두 번 클릭하여 \n하차역으로 설정해주세요"
+            android:textSize="13dp"
+            android:textColor="#F61010"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/seat_registration_notice_close_btn"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:text="닫기"
+        android:textSize="10dp"
+        android:backgroundTint="#3A83BF"/>
+
+</LinearLayout>

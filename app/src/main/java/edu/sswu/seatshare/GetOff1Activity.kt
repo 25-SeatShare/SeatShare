@@ -56,7 +56,6 @@ class GetOff1Activity : AppCompatActivity() {
         val departure = intent?.getStringExtra("departure") ?: ""
         val arrive = intent?.getStringExtra("arrive") ?: ""
 
-        findViewById<TextView>(R.id.departure_station_text1_2).text = departure
         findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
 
 

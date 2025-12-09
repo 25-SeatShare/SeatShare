@@ -8,12 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.app.Dialog
+
 
 class SeatRegistration1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.seat_registration1)
+        showSeatRegistrationNotice()
 
         // 버튼 12개 상태
         var isuState = 0
@@ -224,5 +227,19 @@ class SeatRegistration1Activity : AppCompatActivity() {
         findViewById<TextView>(R.id.seat_registration1_back_button).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
+    }
+
+    private fun showSeatRegistrationNotice() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.seat_registration_notice)
+
+        dialog.setCanceledOnTouchOutside(false)
+
+        val closeBtn = dialog.findViewById<Button>(R.id.seat_registration_notice_close_btn)
+        closeBtn.setOnClickListener {
+            dialog.dismiss()   // 팝업만 닫고 SeatRegistration1Activity로 계속 유지
+        }
+
+        dialog.show()
     }
 }
