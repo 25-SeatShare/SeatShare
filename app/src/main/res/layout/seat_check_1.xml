@@ -68,7 +68,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="2dp"/>
 
-        <!-- id 아직 안바꿈 -->
         <TextView
             android:id="@+id/departure_station_text"
             android:layout_width="wrap_content"
@@ -92,6 +91,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/edit_departure_station"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"

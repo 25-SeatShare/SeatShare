@@ -122,6 +122,10 @@ class SeatCheck1Activity : AppCompatActivity() {
         findViewById<TextView>(R.id.seat_check_1_back_button).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
+
+        findViewById<TextView>(R.id.edit_departure_station).setOnClickListener {
+            startActivity(Intent(this, SeatCheck1_2Activity::class.java))
+        }
     }
 
     private fun mapToApiStationName(name: String): String {

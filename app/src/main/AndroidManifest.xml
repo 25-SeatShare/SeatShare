@@ -44,6 +44,7 @@
         <activity android:name=".MyPointActivity" />
         <activity android:name=".MyRankingActivity" />
         <activity android:name=".SeatCheck1Activity" />
+        <activity android:name=".SeatCheck1_2Activity" />
         <activity android:name=".SeatCheck2Activity" />
         <activity android:name=".SeatCheck3Activity" />
         <activity android:name=".MySeatCheckActivity" />
