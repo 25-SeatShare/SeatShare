@@ -189,6 +189,7 @@ class GetOff1Activity : AppCompatActivity() {
                             givePointForGetOff(uid)
                             triggeredByButton = false
                         }
+                        MyIntentHolder.getOffIntent = null
 
                         // ★ 하차 성공 → 좌석 정보 삭제
                         db.collection("users")
