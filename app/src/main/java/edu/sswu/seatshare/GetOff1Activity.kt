@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +37,7 @@ class GetOff1Activity : AppCompatActivity() {
         Station("군자", 37.557121, 127.079542),
         Station("어린이대공원", 37.548033, 127.074860),
         Station("건대입구", 37.540693, 127.070230),
-        Station("뚝섬유원지", 37.531540, 127.067200),
+        Station("자양", 37.531540, 127.067200),
         Station("청담", 37.519365, 127.053220),
         Station("강남구청", 37.517186, 127.041280),
         Station("학동", 37.514229, 127.029130),
@@ -73,8 +74,8 @@ class GetOff1Activity : AppCompatActivity() {
         }
 
         // 하차 인증하기 버튼
-        findViewById<TextView>(R.id.get_off_1_confirm_button).setOnClickListener {
-            triggeredByButton = true   // ✅ 버튼에서 실행되었음을 표시
+        findViewById<Button>(R.id.get_off_1_confirm_button).setOnClickListener {
+        triggeredByButton = true   // ✅ 버튼에서 실행되었음을 표시
             checkLocationPermission()
         }
 
@@ -97,7 +98,9 @@ class GetOff1Activity : AppCompatActivity() {
             )
         } else {
             autodetectCurrentStation()   // 현재역 표시
-            verifyGetOff()              // 하차 인증 시도 (버튼으로 온 경우에만 포인트 적립)
+            if (triggeredByButton) {     // 버튼을 눌렀을 때만 인증 실행
+                verifyGetOff()
+            }
         }
     }
 
@@ -187,12 +190,20 @@ class GetOff1Activity : AppCompatActivity() {
                             triggeredByButton = false
                         }
 
+                        // ★ 하차 성공 → 좌석 정보 삭제
+                        db.collection("users")
+                            .document(uid)
+                            .collection("seats")
+                            .document("current")
+                            .delete()
+
                         // 성공 → 2페이지로 이동
                         val intent = Intent(this, GetOff2Activity::class.java)
                         intent.putExtra("departure", fromStation)
                         intent.putExtra("arrive", toStation)
                         intent.putExtra("platform", platform)
                         intent.putExtra("seatNumber", seatNum)
+                        intent.putExtra("actualGetOffStation", nearest.name)
                         startActivity(intent)
                         finish()
                     } else {
