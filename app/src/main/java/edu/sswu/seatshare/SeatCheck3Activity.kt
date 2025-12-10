@@ -35,6 +35,9 @@ class SeatCheck3Activity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth   // ✅ 추가
 
+    // ✅ 이미 조회해서 포인트 차감된 "점유 좌석 docId" 저장용
+    private val checkedOccupiedSeats = mutableSetOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.seat_check_3)
@@ -100,7 +103,7 @@ class SeatCheck3Activity : AppCompatActivity() {
 
         val color = Color.parseColor("#9CC3E3")
 
-        when(i){
+        when (i) {
             0 -> page1Img.setColorFilter(color)
             1 -> page2Img.setColorFilter(color)
             2 -> page3Img.setColorFilter(color)
@@ -128,11 +131,14 @@ class SeatCheck3Activity : AppCompatActivity() {
                     .addOnSuccessListener {
 
                         if (it.exists()) {
-                            // 이미 점유됨 → 빨간색 + 팝업 표시 + 포인트 -1
+                            // 이미 점유된 좌석
                             btn.setBackgroundColor(Color.parseColor("#ff8787"))
 
-                            // ✅ 점유 좌석 정보 확인 시 포인트 -1
-                            deductPointForCheckingOccupiedSeat()
+                            // ✅ 처음 조회하는 점유 좌석일 때만 포인트 -1
+                            if (!checkedOccupiedSeats.contains(docId)) {
+                                deductPointForCheckingOccupiedSeat()
+                                checkedOccupiedSeats.add(docId)
+                            }
 
                             showSeatPopup(
                                 seatNumber,
@@ -188,7 +194,7 @@ class SeatCheck3Activity : AppCompatActivity() {
         val log = PointItem(delta = -1)
         userRef.collection("pointLogs").document().set(log)
 
-        // 안내 (원하면 삭제 가능)
+        // 안내
         toast("점유 좌석 확인으로 포인트 1점 차감되었습니다.")
     }
 
