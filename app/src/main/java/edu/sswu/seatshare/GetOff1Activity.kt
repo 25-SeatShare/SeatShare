@@ -45,7 +45,7 @@ class GetOff1Activity : AppCompatActivity() {
         Station("반포", 37.508178, 127.011727),
         Station("고속터미널", 37.504465, 127.004943),
         Station("내방", 37.487618, 126.993513),
-        Station("이수(총신대입구)", 37.486263, 126.981989),
+        Station("이수", 37.486263, 126.981989),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
