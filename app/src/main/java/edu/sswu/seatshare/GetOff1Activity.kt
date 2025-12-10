@@ -52,17 +52,26 @@ class GetOff1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.get_off_1)
 
-        val intent = MyIntentHolder.getOffIntent
-        val departure = intent?.getStringExtra("departure") ?: ""
-        val arrive = intent?.getStringExtra("arrive") ?: ""
-
-        findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
-
-
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        db.collection("users").document(uid!!)
+            .collection("seats").document("current")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val arrive = snapshot.getString("toStation") ?: ""
+                val departure = snapshot.getString("fromStation") ?: ""
+
+                findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
+            }
+
+
+
+
+
 
         currentStationText = findViewById(R.id.current_station_text)
 
