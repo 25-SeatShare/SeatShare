@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -205,16 +206,37 @@ class SeatCheck3Activity : AppCompatActivity() {
         dialog.findViewById<TextView>(R.id.seat_check_5_seat_num).text = seatNumber
 
         val statusText = dialog.findViewById<TextView>(R.id.seat_check_5_status)
+        val pointMsg = dialog.findViewById<TextView>(R.id.seat_check_5_point_message)
 
         if (occupied) {
+            pointMsg.visibility = View.VISIBLE
             statusText.text = "착석 중"
             statusText.setTextColor(Color.RED)
 
-            dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station).text =
-                "출발: $from / 도착: $to"
+            // -------------------------
+            // ① 하차역만 표시
+            // -------------------------
+            dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station).text = to
+
+
+            // -------------------------
+            // ② N 정거장 계산 후 표시
+            // -------------------------
+            val currentStation = from   // 현재 좌석 정보는 출발역 기준으로 조회됨
+
+            val n = calculateRemainingStations(currentStation, to)
+
+            dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station_cnt).text =
+                if (n >= 0) n.toString() else "-"
+
         } else {
+            pointMsg.visibility = View.GONE
             statusText.text = "빈 좌석"
             statusText.setTextColor(Color.GRAY)
+
+            // 빈 좌석이면 표시 필요 없음
+            dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station).text = "-"
+            dialog.findViewById<TextView>(R.id.seat_check_5_arrive_station_cnt).text = "-"
         }
 
         dialog.findViewById<Button>(R.id.seat_check_5_close_btn).setOnClickListener {
@@ -223,6 +245,31 @@ class SeatCheck3Activity : AppCompatActivity() {
 
         dialog.show()
     }
+
+    private val line7Stations = listOf(
+        "군자",
+        "어린이대공원",
+        "건대입구",
+        "군지",
+        "청담",
+        "강남구청",
+        "학동",
+        "논현",
+        "반포",
+        "고속터미널",
+        "내방",
+        "이수"
+    )
+
+    private fun calculateRemainingStations(current: String, destination: String): Int {
+        val idxCurrent = line7Stations.indexOf(current)
+        val idxDest = line7Stations.indexOf(destination)
+
+        if (idxCurrent == -1 || idxDest == -1) return -1
+
+        return kotlin.math.abs(idxDest - idxCurrent)
+    }
+
 
     private fun toast(msg: String) =
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
