@@ -135,6 +135,7 @@
         android:backgroundTint="#3A83BF"/>
 
     <TextView
+        android:id="@+id/seat_check_5_point_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

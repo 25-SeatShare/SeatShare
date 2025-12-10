@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,26 +34,10 @@ class GetOff1Activity : AppCompatActivity() {
     data class Station(val name: String, val lat: Double, val lon: Double)
 
     private val line7StationsGPS = listOf(
-        Station("장암", 37.700109, 127.053196),
-        Station("도봉산", 37.689313, 127.046222),
-        Station("수락산", 37.677774, 127.055933),
-        Station("마들", 37.664940, 127.057675),
-        Station("노원", 37.655128, 127.061368),
-        Station("중계", 37.644583, 127.064303),
-        Station("하계", 37.635940, 127.067500),
-        Station("공릉(서울산업대입구)", 37.625742, 127.072896),
-        Station("태릉입구", 37.617983, 127.074673),
-        Station("먹골", 37.610469, 127.077276),
-        Station("중화", 37.602545, 127.079264),
-        Station("상봉", 37.596362, 127.085031),
-        Station("면목", 37.588579, 127.087503),
-        Station("사가정", 37.580894, 127.088932),
-        Station("용마산", 37.573646, 127.086727),
-        Station("중곡", 37.565923, 127.086849),
         Station("군자", 37.557121, 127.079542),
         Station("어린이대공원", 37.548033, 127.074860),
         Station("건대입구", 37.540693, 127.070230),
-        Station("뚝섬유원지", 37.531540, 127.067200),
+        Station("자양", 37.531540, 127.067200),
         Station("청담", 37.519365, 127.053220),
         Station("강남구청", 37.517186, 127.041280),
         Station("학동", 37.514229, 127.029130),
@@ -61,47 +46,32 @@ class GetOff1Activity : AppCompatActivity() {
         Station("고속터미널", 37.504465, 127.004943),
         Station("내방", 37.487618, 126.993513),
         Station("이수(총신대입구)", 37.486263, 126.981989),
-        Station("남성", 37.484596, 126.971251),
-        Station("숭실대입구", 37.496029, 126.953822),
-        Station("상도", 37.502834, 126.947910),
-        Station("장승배기", 37.504898, 126.939150),
-        Station("신대방삼거리", 37.499720, 126.928280),
-        Station("보라매", 37.499701, 126.920783),
-        Station("신풍", 37.500080, 126.909930),
-        Station("대림", 37.493105, 126.894913),
-        Station("남구로", 37.486056, 126.887249),
-        Station("가산디지털단지", 37.481426, 126.882675),
-        Station("철산", 37.476050, 126.867911),
-        Station("광명사거리", 37.479252, 126.854876),
-        Station("천왕", 37.486637, 126.839577),
-        Station("온수", 37.492970, 126.823388),
-        Station("까치울", 37.506207, 126.810939),
-        Station("부천종합운동장", 37.505431, 126.797376),
-        Station("춘의", 37.503663, 126.787036),
-        Station("신중동", 37.503048, 126.775960),
-        Station("부천시청", 37.504631, 126.764326),
-        Station("상동", 37.505781, 126.753083),
-        Station("삼산체육관", 37.506411, 126.742153),
-        Station("굴포천", 37.507018, 126.731274),
-        Station("부평구청", 37.508336, 126.720548)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.get_off_1)
 
-        val intent = MyIntentHolder.getOffIntent
-        val departure = intent?.getStringExtra("departure") ?: ""
-        val arrive = intent?.getStringExtra("arrive") ?: ""
-
-        findViewById<TextView>(R.id.departure_station_text1_2).text = departure
-        findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
-
-
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        db.collection("users").document(uid!!)
+            .collection("seats").document("current")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val arrive = snapshot.getString("toStation") ?: ""
+                val departure = snapshot.getString("fromStation") ?: ""
+
+                findViewById<TextView>(R.id.arrive_station_text1_2).text = arrive
+            }
+
+
+
+
+
 
         currentStationText = findViewById(R.id.current_station_text)
 
@@ -112,8 +82,8 @@ class GetOff1Activity : AppCompatActivity() {
         }
 
         // 하차 인증하기 버튼
-        findViewById<TextView>(R.id.get_off_1_confirm_button).setOnClickListener {
-            triggeredByButton = true   // ✅ 버튼에서 실행되었음을 표시
+        findViewById<Button>(R.id.get_off_1_confirm_button).setOnClickListener {
+        triggeredByButton = true   // ✅ 버튼에서 실행되었음을 표시
             checkLocationPermission()
         }
 
@@ -136,7 +106,9 @@ class GetOff1Activity : AppCompatActivity() {
             )
         } else {
             autodetectCurrentStation()   // 현재역 표시
-            verifyGetOff()              // 하차 인증 시도 (버튼으로 온 경우에만 포인트 적립)
+            if (triggeredByButton) {     // 버튼을 눌렀을 때만 인증 실행
+                verifyGetOff()
+            }
         }
     }
 
@@ -225,6 +197,14 @@ class GetOff1Activity : AppCompatActivity() {
                             givePointForGetOff(uid)
                             triggeredByButton = false
                         }
+                        MyIntentHolder.getOffIntent = null
+
+                        // ★ 하차 성공 → 좌석 정보 삭제
+                        db.collection("users")
+                            .document(uid)
+                            .collection("seats")
+                            .document("current")
+                            .delete()
 
                         // 성공 → 2페이지로 이동
                         val intent = Intent(this, GetOff2Activity::class.java)
@@ -232,6 +212,7 @@ class GetOff1Activity : AppCompatActivity() {
                         intent.putExtra("arrive", toStation)
                         intent.putExtra("platform", platform)
                         intent.putExtra("seatNumber", seatNum)
+                        intent.putExtra("actualGetOffStation", nearest.name)
                         startActivity(intent)
                         finish()
                     } else {
