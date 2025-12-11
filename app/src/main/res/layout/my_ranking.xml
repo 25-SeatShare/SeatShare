@@ -122,7 +122,7 @@
         <!-- 레벨 업그레이드 안내문-->
         <LinearLayout
             android:id="@+id/my_ranking_bg2"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginBottom="15dp"
             android:background="#E9E9E9"
@@ -192,11 +192,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="33dp"
-                android:paddingRight="25dp">
+                android:layout_marginTop="5dp">
 
                 <!-- Lv1. -->
                 <ImageView
@@ -245,7 +243,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:paddingLeft="33dp">
 
             <TextView
@@ -301,6 +299,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:gravity="center"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
 
